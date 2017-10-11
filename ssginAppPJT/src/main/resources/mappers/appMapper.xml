@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sinc.ssgin.app.mapper">
+ 	<insert id="insert" parameterType="user">
+ 		INSERT INTO SSGIN_USER_TBL
+ 		VALUES (SSGIN_USER_SEQ.NEXTVAL, #{user_hash})
+ 	</insert>
+ 	
+ 	<select id="history" parameterType="user" resultType="log">
+ 		SELECT * FROM SSGIN_LOG_TBL
+ 	</select>
+</mapper>  
