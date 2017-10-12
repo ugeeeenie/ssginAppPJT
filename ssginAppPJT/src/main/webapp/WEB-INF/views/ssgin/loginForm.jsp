@@ -62,10 +62,11 @@
  </div>
 </div>
 
-	<input type="hidden" id="name" value="${userInfo.user_name}">
+	<%-- <input type="hidden" id="name" value="${userInfo.user_name}">
 	<input type="hidden" id="birth" value="${userInfo.user_birth}">
 	<input type="hidden" id="gender" value="${userInfo.user_sex}">
-	<input type="hidden" id="phone" value="${userInfo.user_phone}">
+	<input type="hidden" id="phone" value="${userInfo.user_phone}"> --%>
+	<input type="hidden" id="hash" value="${loginUser.user_hash}">
 
   <script src="/resources/lib/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="/resources/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
@@ -75,10 +76,6 @@
   <script src="/resources/js/ethereum/clipboard.min.js"></script>	
   <script src="/resources/js/ethereum/ethereum.js"></script>
   <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script> 
-  <script>
-  $('#resetBtn').click(function(){
-	  location.href = "/intro.app";
-  });
-  </script>
+  <script src="/resources/js/ethereum/ssginLeave.js" type="text/javascript"></script> 
 </body>
 </html>

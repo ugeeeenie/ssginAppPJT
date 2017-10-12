@@ -47,11 +47,15 @@
   <!-- End Main content -->
 </div>
 
+<input type="hidden" id="id" value="${loginUser.user_hash}">
+
   <script src="/resources/lib/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="/resources/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
   <script src="/resources/js/main.js" type="text/javascript"></script>
   <script src="/resources/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="/resources/js/app-dashboard.js" type="text/javascript"></script>
+  <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script> 
+  <script src="/resources/js/ethereum/ssginLeave.js" type="text/javascript"></script> 
   <script type="text/javascript">
     $(document).ready(function(){
     	//initialize the javascript
@@ -61,12 +65,6 @@
     
     $('#appInfo').click(function(){
 		alert("SSG IN. Application ver 1.0 Made by Shinsegae I&C");
-	});
-	
-	$('#userDelete').click(function(){
-		if(confirm("계정을 해지하시겠습니까?")){
-			location.href = "/intro.app";
-		}
 	});
   </script>
 </body>

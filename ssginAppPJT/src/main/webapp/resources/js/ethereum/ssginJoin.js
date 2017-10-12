@@ -1,8 +1,8 @@
 Web3 = require('web3');
 web3 = new Web3();
-web3.setProvider(new Web3.providers.HttpProvider('http://10.149.179.196:8545'));
+web3.setProvider(new Web3.providers.HttpProvider('http://localhost:8545')); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
 
-var abi = JSON.parse('[{"constant":true,"inputs":[{"name":"userId","type":"string"}],"name":"memberJoin","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"string"}],"name":"leave","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"string"}],"name":"memberLeave","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"string"},{"name":"userPwd","type":"string"}],"name":"join","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"userPwd","type":"string"}],"name":"makePwd","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"id","type":"bytes32"}],"name":"existID","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"ssginAuth","outputs":[{"name":"id","type":"bytes32"},{"name":"pwd","type":"bytes32"},{"name":"flag","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"string"},{"name":"userPwd","type":"string"}],"name":"ssginWithID","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"string"}],"name":"makeId","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]');
+var abi = JSON.parse('[{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"joinPossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"existID","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"memberJoin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"ssginAuth","outputs":[{"name":"id","type":"bytes32"},{"name":"pwd","type":"bytes32"},{"name":"flag","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"ssginWithID","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"}],"name":"memberLeave","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"idList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"leavePossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]');
 var ssginContract = web3.eth.contract(abi);
 
 /* 한조 address, pwd
@@ -18,7 +18,7 @@ var adminAddr = "0xa3cf1b84ee70fcf4db335e3e7d8f0fd3aa5045ca";
 var adminPwd = "1111";
 
 /* 지은 contract address */
-var contractInstance = ssginContract.at('0x76d1c4feddea6cd7c864a8de0e810cf1ef29269f');
+var contractInstance = ssginContract.at('0xf3c80a68d305534077a1bbc8889ad62539f5c983');
 
 $(function(){
 	console.log("register");
@@ -29,28 +29,26 @@ $(function(){
 	var phone = $('#phone').val();
 	console.log(userId, birth, gender, phone);
 	
-	var id = userId + birth + gender + phone;
-    	
 	var originPwd = $('#pwd').val();
-	var pwd = originPwd.substring(0,1) + "s"
+	var newPwd = originPwd.substring(0,1) + "s"
 				+ originPwd.substring(1,2) + "s"
 				+ originPwd.substring(2,3) + "g"
 				+ originPwd.substring(3,4) + "i"
 				+ originPwd.substring(4,5) + "n"
 				+ originPwd.substring(5);
 	
-	/*var id = web3.sha3(userId+birth+gender+phone);
-	var pwd = web3.sha3(newPwd);*/
+	var id = web3.sha3(userId+birth+gender+phone);
+	var pwd = web3.sha3(newPwd);
 	console.log(id);
 	console.log(pwd);
 	
-	contractInstance.memberJoin.call(id, function(e1, result){
+	contractInstance.joinPossibleCheck.call(id, function(e1, result){
 		console.log("memberJoin");
 		if(!e1){
 			if(result == "joinPossible"){
 				console.log(result);
 				web3.personal.unlockAccount(adminAddr, adminPwd, function(e2, success){
-					contractInstance.join(id, pwd, {from: adminAddr}, function(e3, txHash){
+					contractInstance.memberJoin(id, pwd, {gas: 140000, from: adminAddr}, function(e3, txHash){
 						if(!e3){
 							$("#filter").append('Smart Contract Transation ID  : <span style="background:#C0FFFF;">' + txHash +' </span><br>');
 							var blockFilter = web3.eth.filter('latest');
@@ -76,7 +74,7 @@ $(function(){
 															$.ajax({
 																url: "/ssgin/joinDB.app",
 																type: "post",
-																data: { user_hash : web3.sha3(id) },
+																data: { user_hash : id },
 																success : function(){
 																	$('.wrap-loading').addClass('display-none');
 																	alert("블록체인 SSG IN 시스템 가입을 환영합니다^^");
@@ -86,8 +84,7 @@ $(function(){
 														}
 														
 														else{
-															console.log("e6");
-															alert(e6);
+															alert("e6 : " + e6);
 														}
 													});
 												}else{
@@ -97,20 +94,17 @@ $(function(){
 										}
 										
 										else{
-											console.log("e5");
-											alert(e5);
+											alert("e5 : " + e5);
 										}
 									});//end getBlock()
 								}
 								else{
-									console.log("e4");
-									alert(e4);
+									alert("e4 : " + e4);
 								}
 							});//end watch
 						}
 						else{
-							console.log("e3");
-							alert(e3);
+							alert("e3 : " + e3);
 						}
 					});
 				});
@@ -123,8 +117,7 @@ $(function(){
 		}
 		
 		else{
-			console.log("e1");
-			alert(e1);
+			alert("e1 : " + e1);
 		}
 	});
 });
