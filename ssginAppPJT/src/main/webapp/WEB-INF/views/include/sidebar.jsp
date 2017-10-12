@@ -29,7 +29,7 @@
     </nav>
     <div class="am-left-sidebar">
       <div class="content">
-        <div class="am-logo"></div>
+        <a class="am-logo" href="/ssgin/main.app"></a>
         <ul class="sidebar-elements">
 	        <!-- <ul class="sub-menu"> -->
 	          <li class="active parents"><a href="/ssgin/mypaging.app"><span class="label label-primary">My Page</span></a>

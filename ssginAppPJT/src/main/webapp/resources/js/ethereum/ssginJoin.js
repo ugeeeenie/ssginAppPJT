@@ -47,6 +47,7 @@ $(function(){
 		if(!e1){
 			if(result == "joinPossible"){
 				console.log(result);
+				
 				web3.personal.unlockAccount(adminAddr, adminPwd, function(e2, success){
 					contractInstance.memberJoin(id, pwd, {gas: 140000, from: adminAddr}, function(e3, txHash){
 						if(!e3){
@@ -66,10 +67,6 @@ $(function(){
 														if(!e6){
 															console.log(log);
 															console.log("Join Success. hash : " + txHash);
-															
-															$('.wrap-loading').addClass('display-none');
-															alert("블록체인 SSG IN 시스템 가입을 환영합니다^^");
-															location.href = "/ssgin/loginForm.app";
 															
 															$.ajax({
 																url: "/ssgin/joinDB.app",
@@ -112,7 +109,18 @@ $(function(){
 			
 			if(result == "idAlreadyExist"){
 				console.log(result);
+				$('.wrap-loading').addClass('display-none');
 				alert("사용자가 시스템에 존재합니다.");
+				
+				$.ajax({
+					url: "/ssgin/loginUserCheck.app",
+					type: "post",
+					data: { user_hash : id },
+					success : function(){
+						$('.wrap-loading').addClass('display-none');
+						location.href = "/ssgin/loginForm.app";
+					}
+				});
 			}
 		}
 		

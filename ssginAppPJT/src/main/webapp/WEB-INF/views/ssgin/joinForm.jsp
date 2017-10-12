@@ -23,18 +23,25 @@
 	  overflow: hidden;
 	}
 	
-	 .radio-group input {
-    /* This is on purpose for accessibility. Using display: hidden is evil.
-    This makes things keyboard friendly right out tha box! */
-   height: 0px;
-   width: 0px;
-   position: absolute;
-   top: -20px;
-} .radio-group .not-active  {
-   color: #3276b1;
-   background-color: #fff;
-}
+	.radio-group input {
+	    /* This is on purpose for accessibility. Using display: hidden is evil.
+	    This makes things keyboard friendly right out tha box! */
+	   height: 0px;
+	   width: 0px;
+	   position: absolute;
+	   top: -20px;
+	} 
+	.radio-group .not-active  {
+	   color: #3276b1;
+	   background-color: #fff;
+	}
+	.form-group-nopadding { padding-left:0px; padding-right:0px; }
+	label.btn-radio { margin-top:0; padding:13px 17px; border:1px solid #F0F0F0; font-size: small; font-weight: bold;}
+    .am-wrapper { background-color: #fff; }
+
   </style>
+  
+  <script src="http://code.jquery.com/jquery-latest.js"></script> 
 </head>
 <body>
 <div class="am-wrapper">
@@ -62,65 +69,86 @@
                 </ul>
                 <div class="step-content">
                   <div data-step="1" class="step-pane active" id="data1">
-                      <div class="form-group">
-						<label>이용약관(필수)</label><br> 
-						<textarea cols="100" rows="15" readonly>
-						</textarea><br>
-						<div class="col-sm-6">
-	                      <div class="am-checkbox" style="text-align:right;width:80%;">
-	                        <input id="agree1" type="checkbox" class="needsclick">
-	                        <label for="agree1">동의합니다.</label>
-	                      </div>
-	                    </div>
-					  </div><br>
-					  <div class="form-group">
-						<label>개인정보 취급방침(필수)</label><br> 
-						<textarea cols="100" rows="15" readonly>
-						</textarea><br>
-						<div class="col-sm-6">
-	                      <div class="am-checkbox" style="text-align:right;width:80%;">
-	                        <input id="agree2" type="checkbox" class="needsclick">
-	                        <label for="agree2">동의합니다.</label>
-	                      </div>
-	                    </div>
-					  </div>
-                      <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                          <button id="nextBtn1" data-wizard="#wizard1" class="btn btn-primary btn-space wizard-next" onclick="checkAgree();">다음 <i class="icon s7-angle-right" style="font-size:25pt;"></i></button>
+                    <div class="form-group">
+                        <label for="" class="col-xs-12 control-label form-group-nopadding">이용약관(필수)</label>
+                        <div class="col-xs-12 form-group-nopadding"><textarea cols="100" rows="15" readonly class="form-control"></textarea></div>
+                        <div class="col-xs-12 form-group-nopadding">
+                          <div class="am-checkbox pull-right">
+                            <input id="agree1" type="checkbox" class="needsclick">
+                            <label for="agree1">동의합니다.</label>
+                          </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-xs-12 control-label form-group-nopadding">개인정보 취급방침(필수)</label>
+                        <div class="col-xs-12 form-group-nopadding"><textarea cols="100" rows="15" readonly class="form-control"></textarea></div>
+                        <div class="col-xs-12 form-group-nopadding">
+                          <div class="am-checkbox pull-right">
+                            <input id="agree2" type="checkbox" class="needsclick">
+                            <label for="agree2">동의합니다.</label>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-xs-12 form-group-nopadding text-right">
+                      	<!-- <a href="javascript:checkAgree();" class="btn btn-primary btn-space wizard-next" data-wizard="#wizard1"><img src="../../resources/img/next.png" style="width:100%;"></a> -->
+                        <button id="nextBtn1" data-wizard="#wizard1" onclick="checkAgree();" style="border:none;padding:0;"><img class="btn-img" src="../../resources/img/next.png" style="width:100%;"></button>
                       </div>
+                    </div>
                   </div>
                
                   <div data-step="2" class="step-pane" id="data2">
-                  	<label>회원정보 입력</label><br> 
-                  	<form action="/ssgin/setPwd.app" data-parsley-validate="" novalidate="" method="post">
-	                  <div class="form-group">
-	                    <input type="text" name="user_name" parsley-trigger="change" required placeholder="이름" autocomplete="off" class="form-control">
-	                  </div>
-	                  <div class="form-group" style="width:80%; float:left;">
-	                    <input type="text" name="user_birth" parsley-trigger="change" required placeholder="생년월일 6자리(ex.900101)" autocomplete="off" class="form-control"
-	                    	maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
-	                  </div>
-	                  <div class="input-group">
-                         <div class="btn-group radio-group">
-                           	<label class="btn btn-primary" style="position:relative;float:left;width:50%;font-size:14pt;margin-top:0;border:1px solid #F0F0F0;">
-                           	 남 <input type="radio" value="1" name="user_sex"></label>
-                           	<label class="btn btn-primary not-active" style="position:relative;float:left;width:50%;font-size:14pt;margin-top:0;border:1px solid #F0F0F0;">
-                           	 여 <input type="radio" value="2" name="user_sex"></label>
-                         </div>
+                    <form id="joinFormStep2" class="form-horizontal" data-parsley-validate="" novalidate="" method="post">
+                      <div class="form-group" style="padding-bottom: 0;padding-top: 0;">
+                        <p class="form-control-static">회원정보 입력</p>
                       </div>
-	                  <div class="form-group" style="clear:both;">
-	                    <select class="form-control" id="telecom" style="position: absolute; float: left; width: 10%;">
-							<option value="SKT">SK</option>
-							<option value="KT">KT</option>
-							<option value="LGU+">LGU+</option>
-						</select>
-						<input type="text" name="user_phone" parsley-trigger="change" required placeholder="핸드폰번호 전체를 입력해주세요('-'제외)" autocomplete="off" class="form-control"
-	                    	maxlength="11" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" style="position: relative; left: 10%; width: 90%;">
+                      <div class="form-group">
+                        <input type="text" name="user_name" parsley-trigger="change" required placeholder="이름" autocomplete="off" class="form-control">
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-10 form-group-nopadding">
+                          <input type="text" name="user_birth" parsley-trigger="change" required placeholder="생년월일 6자리(ex.900101)" autocomplete="off" class="form-control"
+                        maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
+                        </div>
+                        <div class="col-xs-2 form-group-nopadding">
+                          <div class="input-group pull-right">
+                           <div class="btn-group radio-group">
+                              <label class="btn btn-primary btn-radio">
+                              	 남 <input type="radio" value="1" name="user_sex"></label>
+                              <label class="btn btn-primary btn-radio not-active">
+                              	 여 <input type="radio" value="2" name="user_sex"></label>
+                           </div>
+                         </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-xs-2 form-group-nopadding">
+                          <select class="form-control" id="telecom">
+                            <option value="SKT">SK</option>
+                            <option value="KT">KT</option>
+                            <option value="LGU+">LGU+</option>
+                          </select>
+                        </div>
+                        <div class="col-xs-10 form-group-nopadding">
+                          <input type="text" name="user_phone" parsley-trigger="change" required placeholder="핸드폰번호 전체를 입력해주세요('-'제외)" autocomplete="off" class="form-control"
+                        maxlength="11" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
+                        </div>
+                      </div>
+	                  <div class="row">
+	                     <div class="col-xs-10 form-group-nopadding">
+	                        <input type="text" id="authNum" parsley-trigger="change" required autocomplete="off" class="form-control" maxlength="6" 
+	                          		onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" disabled>
+	                     </div>
+	                     <div class="col-xs-2 form-group-nopadding">
+	                        <a id="phoneAuthBtn" class="btn btn-space btn-alt3" style="font-size: small; margin: 2% 10%; padding: 6% 15%;">인증번호 받기</a>
+	                     </div>
 	                  </div>
-	                  <div class="text-right">
-	                    <button type="submit" data-wizard="#wizard1" class="btn btn-space btn-primary">다음 <i class="icon s7-angle-right" style="font-size:25pt;"></i></button>
-	                  </div>
+                      <div class="form-group">
+                        <div class="col-xs-12 form-group-nopadding text-right">
+                        	<button id="nextBtn2" data-wizard="#wizard1" onclick="compareNum();" style="border:none;padding:0;"><img class="btn-img" src="../../resources/img/next.png" style="width:100%;"></button>
+                        	<!-- <a href="javascript:joinFormSubmit();" class="" data-wizard="#wizard1"><img src="../../resources/img/next.png" style="width:100%;"></a> -->
+                        </div>
+                      </div>
                     </form>
                   </div>
                 </div>
@@ -142,11 +170,19 @@
   <script src="/resources/lib/parsley/parsley.min.js" type="text/javascript"></script>
   <script src="/resources/js/app-form-wizard.js" type="text/javascript"></script>
   <script type="text/javascript">
-    /* $(document).ready(function(){
+    $(document).ready(function(){
     	//initialize the javascript
     	App.init();
     	App.wizard();
-    }); */
+    	
+    	$('.radio-group label').on('click', function(){
+            $(this).removeClass('not-active').siblings().addClass('not-active');
+    	});
+        
+        $('#phoneAuthBtn').click(function(){
+        	$('#authNum').removeAttr('disabled');
+        });
+    });
     
     function checkAgree(){
   	  if($('#agree1').prop('checked') == false){
@@ -166,14 +202,19 @@
   	  }
     }
     
-    $('.radio-group label').on('click', function(){
-        $(this).removeClass('not-active').siblings().addClass('not-active');
-	});
-    
-    $('#submitBtn').click(function(){
-    	$('#joinForm').prop('action', '/ssgin/setPwd.app');
-    	$('#joinForm').submit();
-    });
+    function compareNum(num){
+    	$('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
+	    $('#joinFormStep2').submit();
+	      
+    	  /* if(num == $('#authNum').val()){
+    		  alert("인증 성공!");
+    		  
+    		  $('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
+    	      $('#joinFormStep2').submit();
+    	  }else{
+    		  alert("인증번호가 일치하지 않습니다.");
+    	  } */
+    }
   </script>
 </body>
 </html>

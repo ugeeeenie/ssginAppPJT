@@ -5,7 +5,10 @@
 
 <!-- Main content -->
     <div class="am-content">
-    	<h2>MY BLOCK</h2>
+    	<div class="page-head">
+        	<h2 align="center">MY BLOCK</h2>
+      	</div>
+      	
       <div class="main-content">
         <!--+general-chart("classes", "title", "height", "id", "counter value", "counter desc", tools enabled (use true or false))-->
         <div class="row">
