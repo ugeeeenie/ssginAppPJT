@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sinc.ssgin.app.model.vo.InfoVO;
-import com.sinc.ssgin.app.model.vo.LogVO;
 import com.sinc.ssgin.app.model.vo.UserVO;
 import com.sinc.ssgin.app.user.service.UserService;
 
@@ -26,14 +25,13 @@ public class UserCtrl {
 	@RequestMapping("/loginForm.app")
 	public String loginForm(UserVO user){
 		System.out.println("loginform ctrl ok");
-		//InfoVO result=service.LoginServiceRow(userInfo);
-		//System.out.println(result.getId());
+		
 		return "ssgin/loginForm";
 	}
 	
 	//회원가입폼페이지
 	@RequestMapping("/joinForm.app")
-	public String joinForm(InfoVO userInfo, HttpSession session){
+	public String joinForm(InfoVO userInfo){
 		System.out.println("joinform ok");
 		
 		return "ssgin/joinForm";	
@@ -59,8 +57,8 @@ public class UserCtrl {
 		result.setUser_pwd(userInfo.getUser_pwd());
 		
 		session.setAttribute("userInfo", result);
-		
 		System.out.println("result : " + result.toString());
+		
 		return "ssgin/joinIng";	
 	}
 	
@@ -74,8 +72,19 @@ public class UserCtrl {
 		service.joginService(user);
 		
 		session.setAttribute("loginUser", user);
+		System.out.println("loginUser : " + ((UserVO)session.getAttribute("loginUser")).toString());
+	}
+	
+	//loginUser존재할 때 session에 심기
+	@RequestMapping("/loginUserCheck.app")
+	@ResponseBody
+	public void loginUser(UserVO user, HttpSession session){
+		System.out.println("loginUserCheck ok");
 		
-		System.out.println("ctrl join success");
+		System.out.println("user : " + user.toString());
+		
+		session.setAttribute("loginUser", user);
+		System.out.println("loginUser : " + ((UserVO)session.getAttribute("loginUser")).toString());
 	}
 	
 	//약관동의페이지

@@ -5,6 +5,10 @@
 
 <!-- Main content -->
   <div class="am-content">
+  	<div class="page-head">
+        <h2 align="center">이용약관 및 정책</h2>
+      </div>
+  
     <div class="main-content">
 		<div class="form-group text-center">
 			<div class="row">
@@ -12,9 +16,6 @@
 				<div class="col-md-12">
 					<!-- general form elements -->
 					<div class="box">
-						<div class="box-header with-border">
-							<h2>이용약관 및 정책</h2>
-						</div><br>
 						<div class="box-body" id="joinBox" style="display: block;">
 							<div class="form-group">
 								<h4>이용약관(필수)</h4><br> 

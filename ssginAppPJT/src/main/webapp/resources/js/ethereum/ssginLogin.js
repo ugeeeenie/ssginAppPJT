@@ -28,11 +28,12 @@ console.log(userId, birth, gender, phone);
 
 var id = userId + birth + gender + phone;*/
 
-var id = $('#hash').val();
-console.log(id);
 
 $('#loginBtn').click(function(){
 	console.log("login");
+	
+	var id = $('#hash').val();
+	console.log(id);
 	
 	var originPwd = $('#pwd').val();
 	var newPwd = originPwd.substring(0,1) + "s"

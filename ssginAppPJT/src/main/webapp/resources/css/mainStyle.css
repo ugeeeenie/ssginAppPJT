@@ -3486,7 +3486,7 @@ select[multiple].input-lg {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 100%;
+  /* width: 100%; */
 }
 .btn:focus,
 .btn:active:focus,
@@ -7152,20 +7152,22 @@ button.close {
   background-color: rgba(0, 0, 0, 0);
 }
 .carousel-control.left {
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+  /* background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+ */
 }
 .carousel-control.right {
   left: auto;
   right: 0;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+  /* background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+ */
 }
 .carousel-control:hover,
 .carousel-control:focus {
@@ -8347,6 +8349,7 @@ button:focus {
 .am-wrapper {
   min-height: 100%;
   padding-top: 80px;
+  background-color: #fff;
 }
 @media (max-width: 1450px) {
   .am-wrapper {
@@ -10587,8 +10590,9 @@ button:focus {
     padding: 18px 15px 20px;
   }
   .page-head h2 {
-    font-size: 24px;
+  	font-size: 20pt;
     line-height: 28px;
+    text-align: center;
   }
 }
 /*------------------------------------------------------------------
@@ -14968,7 +14972,8 @@ fieldset[disabled] .btn-primary.btn-shade4.focus,
 fieldset[disabled] .btn-primary.btn-shade4:active,
 .btn-primary.btn-shade4.disabled.active,
 .btn-primary.btn-shade4[disabled].active,
-fieldset[disabled] .btn-primary.btn-shade4.active {
+fieldset[disabled] .
+.btn-shade4.active {
   background-color: #ea3939;
   border-color: #ea3939;
 }
@@ -18849,6 +18854,7 @@ fieldset[disabled] .btn-social.btn-tumblr.active {
 }
 .panel-group.accordion .panel .panel-heading a.collapsed {
   color: #555555;
+  font-weight: bold;
 }
 .panel-group.accordion .panel .panel-heading a.collapsed .icon {
   -webkit-transform: rotate(-90deg);

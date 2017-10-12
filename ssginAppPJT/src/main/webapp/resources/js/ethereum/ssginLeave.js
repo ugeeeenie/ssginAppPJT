@@ -35,10 +35,12 @@ $('#userDelete').click(function(){
 	}
 });
 
-var id = $('#hash').val();
-console.log(id);
-
 function leave(){
+	console.log("leave");
+	
+	var id = $('#hash').val();
+	console.log(id);
+	
 	contractInstance.leavePossibleCheck.call(id, function(e1, result){
 		if(!e1){
 			if(result == "leavePossible"){

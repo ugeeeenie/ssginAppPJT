@@ -31,11 +31,11 @@ var App = (function () {
     //Select2 tags
     $(".tags").select2({tags: true, width: '100%'});
 
-    $("#credit_slider").slider().on("slide",function(e){
+    $("#credit_slider").slider().bind("slide",function(e){
       $("#credits").html("$" + e.value);
     });
 
-    $("#rate_slider").slider().on("slide",function(e){
+    $("#rate_slider").slider().bind("slide",function(e){
       $("#rate").html(e.value + "%");
     });
     
