@@ -11,5 +11,8 @@
  	
  	<select id="history" parameterType="user" resultType="log">
  		SELECT * FROM SSGIN_LOG_TBL
+ 		WHERE USER_NO = (SELECT USER_NO
+ 						 FROM	SSGIN_USER_TBL
+ 						 WHERE	USER_HASH = #{user_hash})
  	</select>
 </mapper>  

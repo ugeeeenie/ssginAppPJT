@@ -142,11 +142,11 @@
   <script src="/resources/lib/parsley/parsley.min.js" type="text/javascript"></script>
   <script src="/resources/js/app-form-wizard.js" type="text/javascript"></script>
   <script type="text/javascript">
-    $(document).ready(function(){
+    /* $(document).ready(function(){
     	//initialize the javascript
     	App.init();
     	App.wizard();
-    });
+    }); */
     
     function checkAgree(){
   	  if($('#agree1').prop('checked') == false){
