@@ -36,8 +36,7 @@
 		              </li>
 			        </c:if>
             	</c:forEach>
-              
-              <li class="timeline-loadmore" style="list-style:none;"><a href="#" class="load-more-btn"><span style="vertical-align:middle;">더보기</span></a></li>
+              <li class="timeline-loadmore" style="list-style:none;"><a href="#" class="load-more-btn"><span>더보기</span></a></li>
             </ul>
           </div>
         </div>

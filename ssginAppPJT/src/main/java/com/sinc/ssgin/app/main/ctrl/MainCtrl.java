@@ -9,6 +9,7 @@ public class MainCtrl {
 	@RequestMapping("/intro.app")
 	public String main() {
 		System.out.println("MainCtrl main");
+		
 		return "intro";
 	}
 }

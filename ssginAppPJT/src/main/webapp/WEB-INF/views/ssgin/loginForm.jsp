@@ -66,7 +66,7 @@
 	<input type="hidden" id="birth" value="${userInfo.user_birth}">
 	<input type="hidden" id="gender" value="${userInfo.user_sex}">
 	<input type="hidden" id="phone" value="${userInfo.user_phone}"> --%>
-	<input type="hidden" id="hash" value="${loginUser.user_hash}">
+	<input type="hidden" id="hash" value="${loginUser.user_id}">
 
   <script src="/resources/lib/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="/resources/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
