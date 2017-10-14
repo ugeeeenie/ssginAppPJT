@@ -2,23 +2,24 @@ package com.sinc.ssgin.app.model.vo;
 
 public class UserVO {
 	private int		user_no;
-	private String	user_hash;
-	private String sessionKey, sessionLimit;
-	private boolean useCookie;
+	private String	user_id;
+	private int		user_block;
+	private String 	user_tx;
+	private String	user_flag;
 	
 	public UserVO() {
 		super();
 	}
 	
-	public UserVO(int user_no, String user_hash, String sessionKey, String sessionLimit, boolean useCookie) {
+	public UserVO(int user_no, String user_id, int user_block, String user_tx, String user_flag) {
 		super();
 		this.user_no = user_no;
-		this.user_hash = user_hash;
-		this.sessionKey = sessionKey;
-		this.sessionLimit = sessionLimit;
-		this.useCookie = useCookie;
+		this.user_id = user_id;
+		this.user_block = user_block;
+		this.user_tx = user_tx;
+		this.user_flag = user_flag;
 	}
-
+	
 	public int getUser_no() {
 		return user_no;
 	}
@@ -27,42 +28,42 @@ public class UserVO {
 		this.user_no = user_no;
 	}
 
-	public String getUser_hash() {
-		return user_hash;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setUser_hash(String user_hash) {
-		this.user_hash = user_hash;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	public int getUser_block() {
+		return user_block;
+	}
+
+	public void setUser_block(int user_block) {
+		this.user_block = user_block;
+	}
+
+	public String getUser_tx() {
+		return user_tx;
+	}
+
+	public void setUser_tx(String user_tx) {
+		this.user_tx = user_tx;
 	}
 	
-	public String getSessionKey() {
-		return sessionKey;
+	public String getUser_flag() {
+		return user_flag;
 	}
 
-	public void setSessionKey(String sessionKey) {
-		this.sessionKey = sessionKey;
-	}
-
-	public String getSessionLimit() {
-		return sessionLimit;
-	}
-
-	public void setSessionLimit(String sessionLimit) {
-		this.sessionLimit = sessionLimit;
-	}
-	
-	public boolean isUseCookie() {
-		return useCookie;
-	}
-
-	public void setUseCookie(boolean useCookie) {
-		this.useCookie = useCookie;
+	public void setUser_flag(String user_flag) {
+		this.user_flag = user_flag;
 	}
 
 	@Override
 	public String toString() {
-		return "UserVO [user_no=" + user_no + ", user_hash=" + user_hash
-				+ ", sessionKey=" + sessionKey + ", sessionLimit="
-				+ sessionLimit + ", useCookie=" + useCookie + "]";
+		return "UserVO [user_no=" + user_no + ", user_id=" + user_id
+				+ ", user_block=" + user_block + ", user_tx=" + user_tx
+				+ ", user_flag=" + user_flag + "]";
 	}
 }

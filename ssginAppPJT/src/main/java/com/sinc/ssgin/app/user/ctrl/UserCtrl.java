@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sinc.ssgin.app.model.vo.InfoVO;
+import com.sinc.ssgin.app.model.vo.LogVO;
 import com.sinc.ssgin.app.model.vo.UserVO;
 import com.sinc.ssgin.app.user.service.UserService;
 
@@ -23,8 +24,10 @@ public class UserCtrl {
 	
 	//로그인폼페이지
 	@RequestMapping("/loginForm.app")
-	public String loginForm(UserVO user){
+	public String loginForm(UserVO user, HttpSession session){
 		System.out.println("loginform ctrl ok");
+		
+		System.out.println(((UserVO)session.getAttribute("loginUser")).toString());
 		
 		return "ssgin/loginForm";
 	}
@@ -69,9 +72,9 @@ public class UserCtrl {
 		System.out.println("joinDB ok");
 		
 		System.out.println("user : " + user.toString());
-		service.joginService(user);
+		service.joinService(user);
 		
-		session.setAttribute("loginUser", user);
+		session.setAttribute("loginUser", service.loginUserService(user));
 		System.out.println("loginUser : " + ((UserVO)session.getAttribute("loginUser")).toString());
 	}
 	
@@ -83,7 +86,7 @@ public class UserCtrl {
 		
 		System.out.println("user : " + user.toString());
 		
-		session.setAttribute("loginUser", user);
+		session.setAttribute("loginUser", service.loginUserService(user));
 		System.out.println("loginUser : " + ((UserVO)session.getAttribute("loginUser")).toString());
 	}
 	
@@ -94,10 +97,24 @@ public class UserCtrl {
 		return "ssgin/userAgreeForm";	
 	}
 
+	//로그내역 테이블에 insert 및 최근 90일 이내 인증내역 아닌 LOG 삭제
+	@RequestMapping("/insertLog.app")
+	@ResponseBody
+	public void mainForm(LogVO log, HttpSession session){
+		System.out.println("insertLog ok");
+		
+		// LOG 테이블에 저장
+		log.setUser_no(((UserVO)session.getAttribute("loginUser")).getUser_no());
+		service.insertLogService(log);
+		
+		/*// 90일 이내가 아닌 인증내역 LOG 테이블에서 삭제
+		service.expiredHistoryService();*/
+	}
+	
 	//메인페이지
 	@RequestMapping("/main.app")
-	public String mainForm(InfoVO userInfo){
-		System.out.println("mainform ok");
+	public String mainForm(){
+		System.out.println("mainForm ok");
 		return "ssgin/mainForm";	
 	}
 	
@@ -129,6 +146,22 @@ public class UserCtrl {
 		return "ssgin/userDelForm";
 	}
 	
+	//state="reset" : 비밀번호 재설정을 위한 탈퇴, state="delete" : 마이페이지>계정해지
+	@RequestMapping("/leaveUser.app")
+	@ResponseBody
+	public void leaveUser(UserVO user, String state){
+		System.out.println("leaveUser ok");
+		
+		// USER TABLE에서 삭제
+		service.deleteUserService(user);
+		
+		// LOG TABLE에서 삭제(계정해지 경우에만) => 비밀번호 재설정일 때는 LOG 내역은 남김(UPDATE 필요)
+		if(state == "reset"){
+			service.deleteLogService(user);
+			//service.updateLogService(user);
+		}
+	}
+	
 	//인증내역보기
 	@RequestMapping("/authHistory.app")
 	public String authHistory(HttpSession session, Model model){
@@ -152,5 +185,12 @@ public class UserCtrl {
 	public String myBlockInfo(){
 		System.out.println("myBlockInfo ok");
 		return "ssgin/myBlockInfo";
+	}
+	
+	//SSG IN 소개 보기
+	@RequestMapping("/ssginInfo.app")
+	public String ssginInfo(){
+		System.out.println("statistics ok");
+		return "ssgin/statistics";
 	}
 }

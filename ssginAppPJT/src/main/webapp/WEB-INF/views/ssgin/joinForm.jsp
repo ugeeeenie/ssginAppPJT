@@ -168,12 +168,12 @@
   <script src="/resources/lib/select2/js/select2.min.js" type="text/javascript"></script>
   <script src="/resources/lib/bootstrap-slider/js/bootstrap-slider.js" type="text/javascript"></script>
   <script src="/resources/lib/parsley/parsley.min.js" type="text/javascript"></script>
-  <script src="/resources/js/app-form-wizard.js" type="text/javascript"></script>
+  <!-- <script src="/resources/js/app-form-wizard.js" type="text/javascript"></script> -->
   <script type="text/javascript">
     $(document).ready(function(){
     	//initialize the javascript
     	App.init();
-    	App.wizard();
+    	//App.wizard();
     	
     	$('.radio-group label').on('click', function(){
             $(this).removeClass('not-active').siblings().addClass('not-active');

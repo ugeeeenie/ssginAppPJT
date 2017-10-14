@@ -6,13 +6,40 @@
 <mapper namespace="com.sinc.ssgin.app.mapper">
  	<insert id="insert" parameterType="user">
  		INSERT INTO SSGIN_USER_TBL
- 		VALUES (SSGIN_USER_SEQ.NEXTVAL, #{user_hash})
+ 		VALUES (SSGIN_USER_SEQ.NEXTVAL, #{user_id}, #{user_block}, #{user_tx}, DEFAULT)
  	</insert>
  	
  	<select id="history" parameterType="user" resultType="log">
  		SELECT * FROM SSGIN_LOG_TBL
  		WHERE USER_NO = (SELECT USER_NO
  						 FROM	SSGIN_USER_TBL
- 						 WHERE	USER_HASH = #{user_hash})
+ 						 WHERE	USER_ID = #{user_id})
  	</select>
+ 	
+ 	<select id="loginUser" parameterType="user" resultType="user">
+ 		SELECT * FROM SSGIN_USER_TBL
+ 		WHERE USER_ID = #{user_id}
+ 	</select>
+ 	
+ 	<insert id="insertLog" parameterType="log">
+ 		INSERT INTO SSGIN_LOG_TBL
+ 		VALUES (#{user_no}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), DEFAULT, #{auth_url})
+ 	</insert>
+ 	
+ 	<delete id="deleteUser" parameterType="user">
+ 		DELETE 	FROM SSGIN_USER_TBL
+ 		WEHRE	USER_ID = #{user_id}
+ 	</delete>
+ 	
+ 	<delete id="deleteLog" parameterType="user">
+ 		DELETE 	FROM SSGIN_LOG_TBL
+ 		WEHRE	USER_NO = (SELECT	USER_NO
+ 							FROM	SSGIN_USER_TBL
+ 							WHERE	USER_ID = #{user_id})
+ 	</delete>
+ 	
+ 	<delete id="expiredHistory">
+ 		DELETE 	FROM SSGIN_LOG_TBL
+		WHERE	AUTH_TIME <![CDATA[<]]> TO_DATE(AUTH_TIME, 'YY/MM/DD') - 90
+ 	</delete>
 </mapper>  

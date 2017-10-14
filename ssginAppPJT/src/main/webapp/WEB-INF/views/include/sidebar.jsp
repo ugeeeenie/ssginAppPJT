@@ -36,9 +36,9 @@
 	          </li>
 	          <li class="parents"><a href="/ssgin/authHistory.app">인증내역보기</a>
 	          </li>
-	          <li class="parents"><a href="/ssgin/statistics.app">SSG IN. Statistics</a>
-	          </li>
 	          <li class="parents"><a href="/ssgin/myBlockInfo.app">My Block Info</a>
+	          </li>
+	          <li class="parents"><a href="/ssgin/ssginInfo.app">SSG IN. 소개</a>
 	          </li>
 	        <!-- </ul> -->
         </ul>
