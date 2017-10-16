@@ -15,6 +15,16 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <link rel="stylesheet" type="text/css" href="/resources/css/mainStyle.css" />
+  <style type="text/css">
+  .bottom-sidebar {
+  	position: relative;
+    top: 232px;
+  }
+  .bottom-sidebar li {
+  	float : left;
+  	width : 25%;
+  }
+  </style>
 </head>
 <body>
   <div class="am-wrapper">
@@ -33,19 +43,36 @@
     </nav>
     <div class="am-left-sidebar">
       <div class="content">
-        <a class="am-logo" href="/ssgin/main.app"></a>
+       <div class="page-title">
+       		<div class="am-logo">
+        	<a href="/ssgin/main.app">
+        		<span style="position:fixed;top:5%;left:20%;">SSG IN. <i class="s7-home"></i></span>
+        	</a><br><br>
+        	<span style="font-size:small;" id="myPhone"></span>
+        	</div>
+        </div>
         <ul class="sidebar-elements">
-	        <!-- <ul class="sub-menu"> -->
-	          <li class="active parents"><a href="/ssgin/mypaging.app"><span class="label label-primary">My Page</span></a>
-	          </li>
-	          <li class="parents"><a href="/ssgin/authHistory.app">인증내역보기</a>
-	          </li>
-	          <li class="parents"><a href="/ssgin/statistics.app">SSG IN. Statistics</a>
-	          </li>
-	          <li class="parents"><a href="/ssgin/myBlockInfo.app">My Block Info</a>
-	          </li>
-	        <!-- </ul> -->
+          <li class="parents"><a href="/ssgin/statistics.app" class="label label-primary">MY 쓱- BLOCK&nbsp;&nbsp;<i class="s7-plugin"></i></a>
+          </li>
+          <li class="parents"><a href="/ssgin/authHistory.app" class="label label-primary">인증내역보기&nbsp;&nbsp</a>
+          </li>
+          <li class="parents"><a href="/ssgin/myBlockInfo.app" class="label label-primary">SSG IN. 소개&nbsp;&nbsp;</a>
+          </li>
+          <li class="parents"><a href="/ssgin/mypaging.app" class="label label-primary">SETTINGS&nbsp;&nbsp;<i class="s7-settings"></i></a>
+          </li>
         </ul>
+        <div class="bottom-sidebar">
+	        <ul class="sidebar-elements">
+	          <li class="parents"><a href="/ssgin/notice.app" style="font-size:x-small;padding:10px;"><i class="s7-comment" style="font-size:x-large;"></i><br>공지사항</a>
+	          </li>
+	          <li class="parents"><a href="/ssgin/faq.app" style="font-size:x-small;padding:10px;"><i class="s7-magic-wand" style="font-size:x-large;"></i><br>FAQ</a>
+	          </li>
+	          <li class="parents"><a href="/ssgin/event.app" style="font-size:x-small;padding:10px;"><i class="s7-gift" style="font-size:x-large;"></i><br>EVENT</a>
+	          </li>
+	          <li class="parents"><a href="/ssgin/useStore.app" style="font-size:x-small;padding:10px;"><i class="s7-browser" style="font-size:x-large;"></i><br>사용처</a>
+	          </li>
+	        </ul>
+        </div>
         <!--Sidebar bottom content-->
       </div>
     </div>

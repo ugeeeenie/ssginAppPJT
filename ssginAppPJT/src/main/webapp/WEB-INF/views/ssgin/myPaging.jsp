@@ -12,7 +12,7 @@
             <div id="accordion1" class="panel-group accordion">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a href="/ssgin/updatePwd.app" class="collapsed"><i class="icon s7-angle-down"></i> 비밀번호 변경 </a></h4>
+                  <h4 class="panel-title"><a href="/ssgin/updatePwd.app" id="resetBtn" class="collapsed"><i class="icon s7-angle-down"></i> 비밀번호 변경 </a></h4>
                 </div>
               </div>
               <div class="panel panel-default">
@@ -32,12 +32,12 @@
               </div>
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a href="#" id="appInfo" class="collapsed"><i class="icon s7-angle-down"></i> 앱 정보</a></h4>
+                  <h4 class="panel-title"><a id="appInfo" class="collapsed"><i class="icon s7-angle-down"></i> 앱 정보</a></h4>
                 </div>
               </div>
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a href="#" id="userDelete" class="collapsed"><i class="icon s7-angle-down"></i> SSG IN 계정 해지</a></h4>
+                  <h4 class="panel-title"><a id="userDelete" class="collapsed"><i class="icon s7-angle-down"></i> SSG IN 계정 해지</a></h4>
                 </div>
               </div>
             </div>
@@ -47,20 +47,25 @@
   <!-- End Main content -->
 </div>
 
-<input type="hidden" id="id" value="${loginUser.user_hash}">
+<input type="hidden" id="id" value="${loginUser.user_id}">
 
   <script src="/resources/lib/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="/resources/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
   <script src="/resources/js/main.js" type="text/javascript"></script>
   <script src="/resources/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="/resources/js/app-dashboard.js" type="text/javascript"></script>
-  <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script> 
+  <!-- <script src="/resources/js/app-dashboard.js" type="text/javascript"></script> -->
+  <!-- <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script>  -->
   <script src="/resources/js/ethereum/ssginLeave.js" type="text/javascript"></script> 
   <script type="text/javascript">
     $(document).ready(function(){
+    	// 전화번호 substr 띄우기
+    	var phone = "${phone}";
+    	phone = phone.substr(0, 3) + " - " + phone.substr(3, 1) + "*** - " + phone.substr(7);
+    	$('#myPhone').text(phone + "  님");
+    	
     	//initialize the javascript
     	App.init();
-    	App.dashboard();
+    	//App.dashboard();
     });
     
     $('#appInfo').click(function(){

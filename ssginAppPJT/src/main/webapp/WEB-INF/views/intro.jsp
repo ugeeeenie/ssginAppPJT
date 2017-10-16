@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/resources/css/mainStyle.css" type="text/css"/>
 </head>
 <body>
-    <div class="am-content">
+    <div class="am-content am-nosidebar-left">
       <!-- 캐러셀 시작 -->
 		<!-- <div class="form-group text-center"> -->
 			<div id="carousel-example-generic" class="carousel slide">

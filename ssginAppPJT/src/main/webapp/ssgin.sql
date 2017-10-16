@@ -62,8 +62,12 @@ VALUES(2, '2017-10-01 14:51:50', 'Y', 'http://www.konkuk.ac.kr');
 INSERT INTO SSGIN_LOG_TBL
 VALUES(2, '2017-10-01 14:51:50', 'Y', 'http://blog.naver.com');
 
-UPDATE 	SSGIN_LOG_TBL
-SET		AUTH_TIME = TO_CHAR('2017-10-14 21:03:01');
+INSERT INTO SSGIN_LOG_TBL
+VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.ssgin.co.kr');
+INSERT INTO SSGIN_LOG_TBL
+VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.naver.com');
+INSERT INTO SSGIN_LOG_TBL
+VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.google.co.kr');
 
 CREATE	TABLE	SSGIN_NOTICE_TBL (
 	NOTICE_SEQ		NUMBER			PRIMARY KEY,

@@ -1,6 +1,8 @@
 package com.sinc.ssgin.app.user.ctrl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -9,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sinc.ssgin.app.model.vo.InfoVO;
 import com.sinc.ssgin.app.model.vo.LogVO;
+import com.sinc.ssgin.app.model.vo.PagingDTO;
 import com.sinc.ssgin.app.model.vo.UserVO;
 import com.sinc.ssgin.app.user.service.UserService;
 
@@ -106,15 +110,21 @@ public class UserCtrl {
 		// LOG 테이블에 저장
 		log.setUser_no(((UserVO)session.getAttribute("loginUser")).getUser_no());
 		service.insertLogService(log);
-		
-		/*// 90일 이내가 아닌 인증내역 LOG 테이블에서 삭제
-		service.expiredHistoryService();*/
 	}
 	
 	//메인페이지
 	@RequestMapping("/main.app")
-	public String mainForm(){
+	public String mainForm(String phoneNum, Model model, HttpSession session){
 		System.out.println("mainForm ok");
+		
+		/* 임시 */
+		phoneNum = "01044883094";
+		session.setAttribute("phone", phoneNum);
+		session.setAttribute("loginUser", new UserVO(10, "0x3fa26ff38e8d4a8333e824e2dedcbfc5db475742d68cd1adf76aa98f5f23566f", 1781008,
+														"0xd0c4ddab3a4bb4ba591b7c6506811dd8061d029ef50d0fc8d648b3e9e5875df1", "Y"));
+		
+		System.out.println("loginUser : " + ((UserVO)session.getAttribute("loginUser")).toString());
+		
 		return "ssgin/mainForm";	
 	}
 	
@@ -152,25 +162,53 @@ public class UserCtrl {
 	public void leaveUser(UserVO user, String state){
 		System.out.println("leaveUser ok");
 		
-		// USER TABLE에서 삭제
-		service.deleteUserService(user);
-		
-		// LOG TABLE에서 삭제(계정해지 경우에만) => 비밀번호 재설정일 때는 LOG 내역은 남김(UPDATE 필요)
 		if(state == "reset"){
+			// USER TABLE UPDATE
+			service.updateUserFlagService(user);
+		}
+		
+		else if(state == "delete"){
+			// USER TABLE에서 삭제
+			service.deleteUserService(user);
+			
+			// LOG TABLE에서 삭제(계정해지 경우에만) => 비밀번호 재설정일 때는 LOG 내역은 남김
 			service.deleteLogService(user);
-			//service.updateLogService(user);
 		}
 	}
 	
 	//인증내역보기
 	@RequestMapping("/authHistory.app")
-	public String authHistory(HttpSession session, Model model){
+	public String authHistory(){
 		System.out.println("authHistory ok");
 		
-		List<Object> list = service.historyService((UserVO)session.getAttribute("loginUser"));
-		model.addAttribute("list", list); 
-		
 		return "ssgin/authHistory";
+	}
+	
+	@RequestMapping("/loadMore.app")
+	@ResponseBody
+	public Map<String, Object> loadMore(PagingDTO paging, String pageNo, HttpSession session){
+		System.out.println("loadMore ok");
+		
+		UserVO loginUser = (UserVO)session.getAttribute("loginUser");
+		
+		paging.setPageSize(10); // 한 페이지에 보일 게시글 수
+		paging.setPageNo(1); // 현재 페이지 번호
+		if(pageNo != null){
+			paging.setPageNo(Integer.parseInt(pageNo));
+		}
+		paging.setBlockSize(10);
+		paging.setTotalCount(service.getHistoryCount(loginUser)); // 게시물 총 개수
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("paging", paging);
+		map.put("loginUser", loginUser);
+		
+		List<Object> list = service.historyListService(map); 
+		Map<String, Object> pageMap = new HashMap<String, Object>();
+		pageMap.put("paging", paging);
+		pageMap.put("list", list);
+		
+		return pageMap;
 	}
 	
 	//통계보기
@@ -182,15 +220,8 @@ public class UserCtrl {
 	
 	//블록정보보기
 	@RequestMapping("/myBlockInfo.app")
-	public String myBlockInfo(){
+	public String myBlockInfo(HttpSession session){
 		System.out.println("myBlockInfo ok");
 		return "ssgin/myBlockInfo";
-	}
-	
-	//SSG IN 소개 보기
-	@RequestMapping("/ssginInfo.app")
-	public String ssginInfo(){
-		System.out.println("statistics ok");
-		return "ssgin/statistics";
 	}
 }

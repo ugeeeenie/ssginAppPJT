@@ -18,7 +18,7 @@ var App = (function () {
     openLeftSidebarClass: 'open-left-sidebar',
     openRightSidebarClass: 'open-right-sidebar',
     removeLeftSidebarClass: 'am-nosidebar-left',
-    openLeftSidebarOnClick: false,
+    openLeftSidebarOnClick: true,
     openLeftSidebarOnClickClass: 'am-left-sidebar--click',
     transitionClass: 'am-animate',
     openSidebarDelay: 400,
@@ -233,7 +233,8 @@ var App = (function () {
       });
 
     /*Calculate sidebar tree active & open classes*/
-      $("li.active", leftSidebar).parents(".parent").addClass("active");
+      /*$("li.active", leftSidebar).parents(".parent").addClass("active");*/
+      $("li.active", leftSidebar).find(".child").addClass("active");
 
     /*Nanoscroller when left sidebar is fixed*/
       if( wrapper.hasClass("am-fixed-sidebar") ){

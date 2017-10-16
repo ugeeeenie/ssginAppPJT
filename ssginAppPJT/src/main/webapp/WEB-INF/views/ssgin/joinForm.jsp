@@ -44,7 +44,7 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script> 
 </head>
 <body>
-<div class="am-wrapper">
+<div class="am-wrapper am-nosidebar-left">
     <div class="am-top-header">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -106,11 +106,11 @@
                         <input type="text" name="user_name" parsley-trigger="change" required placeholder="이름" autocomplete="off" class="form-control">
                       </div>
                       <div class="row">
-                        <div class="col-xs-10 form-group-nopadding">
+                        <div class="col-xs-8 form-group-nopadding">
                           <input type="text" name="user_birth" parsley-trigger="change" required placeholder="생년월일 6자리(ex.900101)" autocomplete="off" class="form-control"
                         maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
                         </div>
-                        <div class="col-xs-2 form-group-nopadding">
+                        <div class="col-xs-4 form-group-nopadding">
                           <div class="input-group pull-right">
                            <div class="btn-group radio-group">
                               <label class="btn btn-primary btn-radio">
@@ -122,25 +122,27 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="col-xs-2 form-group-nopadding">
+                        <div class="col-xs-3 form-group-nopadding">
                           <select class="form-control" id="telecom">
                             <option value="SKT">SK</option>
                             <option value="KT">KT</option>
                             <option value="LGU+">LGU+</option>
                           </select>
                         </div>
-                        <div class="col-xs-10 form-group-nopadding">
+                        <div class="col-xs-9 form-group-nopadding">
                           <input type="text" name="user_phone" parsley-trigger="change" required placeholder="핸드폰번호 전체를 입력해주세요('-'제외)" autocomplete="off" class="form-control"
                         maxlength="11" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
                         </div>
                       </div>
 	                  <div class="row">
-	                     <div class="col-xs-10 form-group-nopadding">
+	                     <div class="col-xs-8 form-group-nopadding">
 	                        <input type="text" id="authNum" parsley-trigger="change" required autocomplete="off" class="form-control" maxlength="6" 
 	                          		onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" disabled>
 	                     </div>
-	                     <div class="col-xs-2 form-group-nopadding">
-	                        <a id="phoneAuthBtn" class="btn btn-space btn-alt3" style="font-size: small; margin: 2% 10%; padding: 6% 15%;">인증번호 받기</a>
+	                     <div class="col-xs-4 form-group-nopadding">
+	                     	<div class="input-group pull-right">
+	                        	<a id="phoneAuthBtn" class="btn btn-space btn-alt3" style="font-size: small; margin: 5% 2%; padding: 5%;">인증번호 받기</a>
+	                     	</div>
 	                     </div>
 	                  </div>
                       <div class="form-group">
@@ -150,6 +152,7 @@
                         </div>
                       </div>
                     </form>
+                    <input type="hidden" id="randomNum">
                   </div>
                 </div>
               </div>
@@ -179,7 +182,9 @@
             $(this).removeClass('not-active').siblings().addClass('not-active');
     	});
         
+    	
         $('#phoneAuthBtn').click(function(){
+        	location.href="app://noti";
         	$('#authNum').removeAttr('disabled');
         });
     });
@@ -202,18 +207,24 @@
   	  }
     }
     
-    function compareNum(num){
-    	$('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
-	    $('#joinFormStep2').submit();
+    function receiveNum(num){
+    	$('#randomNum').val(num);
+    }
+    
+    function compareNum(){
+    	/* $('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
+	    $('#joinFormStep2').submit(); */
 	      
-    	  /* if(num == $('#authNum').val()){
+	    var num = $('#randomNum').val();
+	    
+    	  if(num == $('#authNum').val()){
     		  alert("인증 성공!");
     		  
     		  $('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
     	      $('#joinFormStep2').submit();
     	  }else{
     		  alert("인증번호가 일치하지 않습니다.");
-    	  } */
+    	  } 
     }
   </script>
 </body>
