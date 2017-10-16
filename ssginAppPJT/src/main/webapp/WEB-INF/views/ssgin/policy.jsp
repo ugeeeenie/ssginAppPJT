@@ -19,7 +19,7 @@
 						<div class="box-body" id="joinBox" style="display: block;">
 							<div class="form-group">
 								<h4>이용약관(필수)</h4><br> 
-								<textarea cols="100" rows="15" readonly>
+								<textarea cols="40" rows="10" readonly>
 제 1 장 총 칙
 제 1 조 (용어의 정의)
 이 약관에서 사용되는 용어의 정의는 아래와 같습니다.
@@ -243,7 +243,7 @@ In-App아이템 구매자가 미성년자인지 여부는 In-App결제가 진행
 						</div><br>
 						<div class="form-group">
 							<h4>개인정보 취급방침(필수)</h4><br> 
-							<textarea cols="100" rows="15" readonly>
+							<textarea cols="40" rows="10" readonly>
 정보통신망 이용촉진 및 정보보호 등에 관한 법률 
 [시행 2017.3.23.] [법률 제14080호, 2016.3.22., 일부개정]
  
@@ -289,6 +289,11 @@ In-App아이템 구매자가 미성년자인지 여부는 In-App결제가 진행
   <script src="/resources/js/app-dashboard.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function(){
+    	// 전화번호 substr 띄우기
+    	var phone = "${phone}";
+    	phone = phone.substr(0, 3) + " - " + phone.substr(3, 1) + "*** - " + phone.substr(7);
+    	$('#myPhone').text(phone + "  님");
+    	
     	//initialize the javascript
     	App.init();
     	App.dashboard();

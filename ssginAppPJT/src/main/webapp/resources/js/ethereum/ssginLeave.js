@@ -1,16 +1,13 @@
 Web3 = require('web3');
 web3 = new Web3();
-web3.setProvider(new Web3.providers.HttpProvider('http://10.149.178.227:8545')); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
+web3.setProvider(new Web3.providers.HttpProvider('http://http://10.149.178.227:8545')); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
 
 var abi = JSON.parse('[{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"joinPossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"existID","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"memberJoin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"ssginAuth","outputs":[{"name":"id","type":"bytes32"},{"name":"pwd","type":"bytes32"},{"name":"flag","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"ssginWithID","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"}],"name":"memberLeave","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"idList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"leavePossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]');
 var ssginContract = web3.eth.contract(abi);
 
-/* 한조 address, pwd
- * var adminAddr = "0x521536ad50dd3a22fe6beb0ca0f8ff30a5161eee";
- * var adminPwd = "khc3121"; */
-/* 한조 contract address
- * var contractInstance = ssginContract.at('0x658bd5e8b2465053e02c873ca3934230c879631d');
- */
+/* 한조 address, pwd*/
+/* var adminAddr = "0x521536ad50dd3a22fe6beb0ca0f8ff30a5161eee";
+var adminPwd = "khc3121";  */
 
 /* 지은 address, pwd */
 var adminAddr = "0xa3cf1b84ee70fcf4db335e3e7d8f0fd3aa5045ca";

@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/resources/css/mainStyle.css" type="text/css"/>
 </head>
 <body>
-<div class="am-wrapper">
+<div class="am-wrapper am-nosidebar-left">
     <div class="am-top-header">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -42,7 +42,8 @@
 							<!-- <form id="loginForm" method="post"> -->
 								<div class="form-group text-center">
 									<div class="form-group">
-										<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호 6자리 입력(숫자만)">
+										<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호 6자리 입력(숫자만)"
+										minlength="6" maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
 									</div>
 									<button id="loginBtn" class="btn btn-primary">
 										로그인<i class="fa fa-times spaceLeft"></i>
@@ -52,6 +53,9 @@
 									</a>
 								</div>
 							<!-- </form> -->
+							<form id="phoneForm" method="post">
+								<input type="hidden" id="phoneNum" name="phoneNum" value="">
+							</form>
 						</div>
 					</div>
 				</div>
@@ -77,5 +81,22 @@
   <script src="/resources/js/ethereum/ethereum.js"></script>
   <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script> 
   <script src="/resources/js/ethereum/ssginLeave.js" type="text/javascript"></script> 
-</body>
+  
+  <script>
+    //android -> javascript
+    //안드로이드 버튼 클릭시 
+    $(document).ready(function(){
+    	location.href="app://finger"
+    });
+    
+    function getNum(phone) {
+        $('#phoneNum').val(phone);
+    }
+        
+    function authFinger() {
+        $('#phoneForm').attr('action', '/ssgin/main.app');
+        $('#phoneForm').submit();
+    }
+    </script>
+  </body>
 </html>

@@ -1,6 +1,7 @@
 package com.sinc.ssgin.app.user.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -23,13 +24,7 @@ public class UserDaoImpl implements UserDao{
 		System.out.println("joinRow ok");
 		session.insert(PREFIX+"insert", user);
 	}
-
-	@Override
-	public List<Object> historyRow(UserVO user) {
-		System.out.println("historyRow ok");
-		return session.selectList(PREFIX+"history", user);
-	}
-
+	
 	@Override
 	public UserVO loginUserRow(UserVO user) {
 		System.out.println("loginUserRow ok");
@@ -39,25 +34,37 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public void insertLogRow(LogVO log) {
 		System.out.println("insertLogRow ok");
-		session.selectOne(PREFIX+"insertLog", log);
+		session.insert(PREFIX+"insertLog", log);
 	}
 
 	@Override
 	public void deleteUserRow(UserVO user) {
 		System.out.println("delteUserRow ok");
-		session.selectOne(PREFIX+"deleteUser", user);
+		session.delete(PREFIX+"deleteUser", user);
 	}
 
 	@Override
 	public void deleteLogRow(UserVO user) {
 		System.out.println("delteLogRow ok");
-		session.selectOne(PREFIX+"deleteLog", user);
+		session.delete(PREFIX+"deleteLog", user);
+	}
+	
+	@Override
+	public void updateUserFlagRow(UserVO user) {
+		System.out.println("updateUserFlagRow ok");
+		session.update(PREFIX+"updateFlag", user);
 	}
 
 	@Override
-	public void expiredHistoryRow() {
-		System.out.println("expiredHistory ok");
-		session.selectOne(PREFIX+"expiredHistory");
+	public int getHistoryCountRow(UserVO user) {
+		System.out.println("getHistoryCountRow ok");
+		return session.selectOne(PREFIX+"historyCount", user);
+	}
+
+	@Override
+	public List<Object> historyListRow(Map<String, Object> map) {
+		System.out.println("historyListRow ok");
+		return session.selectList(PREFIX+"history", map);
 	}
 
 }

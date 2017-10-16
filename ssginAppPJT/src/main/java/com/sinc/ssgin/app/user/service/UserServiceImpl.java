@@ -1,6 +1,7 @@
 package com.sinc.ssgin.app.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -21,13 +22,6 @@ public class UserServiceImpl implements UserService{
 		System.out.println("joinService OK");
 		
 		dao.joinRow(user);
-	}
-
-	@Override
-	public List<Object> historyService(UserVO user) {
-		System.out.println("historyService OK");
-		
-		return dao.historyRow(user);
 	}
 
 	@Override
@@ -59,10 +53,24 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void expiredHistoryService() {
-		System.out.println("expiredHistoryService OK");
+	public void updateUserFlagService(UserVO user) {
+		System.out.println("updateUserFlagService OK");
 		
-		dao.expiredHistoryRow();
+		dao.updateUserFlagRow(user);
+	}
+
+	@Override
+	public int getHistoryCount(UserVO user) {
+		System.out.println("getHistoryCount OK");
+		
+		return dao.getHistoryCountRow(user);
+	}
+
+	@Override
+	public List<Object> historyListService(Map<String, Object> map) {
+		System.out.println("historyListService OK");
+		
+		return dao.historyListRow(map);
 	}
 	
 }

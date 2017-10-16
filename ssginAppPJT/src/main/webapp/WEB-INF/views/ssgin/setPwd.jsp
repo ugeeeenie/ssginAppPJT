@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="/resources/css/mainStyle.css" type="text/css"/>
 </head>
 <body>
-<div class="am-wrapper">
+<div class="am-wrapper am-nosidebar-left">
     <div class="am-top-header">
       <div class="container-fluid">
         <div class="navbar-header">

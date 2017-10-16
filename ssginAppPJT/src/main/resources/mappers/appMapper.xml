@@ -9,21 +9,35 @@
  		VALUES (SSGIN_USER_SEQ.NEXTVAL, #{user_id}, #{user_block}, #{user_tx}, DEFAULT)
  	</insert>
  	
- 	<select id="history" parameterType="user" resultType="log">
- 		SELECT * FROM SSGIN_LOG_TBL
- 		WHERE USER_NO = (SELECT USER_NO
+ 	<select id="history" parameterType="map" resultType="log">
+ 		SELECT * 
+ 		FROM (SELECT ROWNUM rnum, A.* 
+ 				FROM (SELECT 	*
+ 						FROM 	SSGIN_LOG_TBL
+ 						WHERE 	USER_NO IN (SELECT 	USER_NO
+ 						 					FROM	SSGIN_USER_TBL
+ 											WHERE	USER_ID = #{loginUser.user_id})
+				 		ORDER BY AUTH_TIME DESC) A
+				WHERE ROWNUM <![CDATA[<]]>= #{paging.endRowNum})
+		WHERE rnum <![CDATA[>]]>= #{paging.startRowNum} 
+ 	</select>
+ 	
+ 	<select id="historyCount" parameterType="user" resultType="int">
+ 		SELECT COUNT(*) FROM SSGIN_LOG_TBL
+ 		WHERE USER_NO IN (SELECT USER_NO
  						 FROM	SSGIN_USER_TBL
  						 WHERE	USER_ID = #{user_id})
  	</select>
  	
  	<select id="loginUser" parameterType="user" resultType="user">
  		SELECT * FROM SSGIN_USER_TBL
- 		WHERE USER_ID = #{user_id}
+ 		WHERE 	USER_ID = #{user_id}
+ 		AND		USER_FLAG = 'Y'
  	</select>
  	
  	<insert id="insertLog" parameterType="log">
  		INSERT INTO SSGIN_LOG_TBL
- 		VALUES (#{user_no}, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), DEFAULT, #{auth_url})
+ 		VALUES (#{user_no}, SYSDATE, DEFAULT, #{auth_url})
  	</insert>
  	
  	<delete id="deleteUser" parameterType="user">
@@ -33,13 +47,14 @@
  	
  	<delete id="deleteLog" parameterType="user">
  		DELETE 	FROM SSGIN_LOG_TBL
- 		WEHRE	USER_NO = (SELECT	USER_NO
+ 		WEHRE	USER_NO IN (SELECT	USER_NO
  							FROM	SSGIN_USER_TBL
  							WHERE	USER_ID = #{user_id})
  	</delete>
  	
- 	<delete id="expiredHistory">
- 		DELETE 	FROM SSGIN_LOG_TBL
-		WHERE	AUTH_TIME <![CDATA[<]]> TO_DATE(AUTH_TIME, 'YY/MM/DD') - 90
- 	</delete>
+ 	<update id="updateFlag" parameterType="user">
+ 		UPDATE	SSGIN_USER_TBL
+ 		SET		USER_FLAG = 'N'
+ 		FROM	USER_ID = #{user_id}
+ 	</update>
 </mapper>  

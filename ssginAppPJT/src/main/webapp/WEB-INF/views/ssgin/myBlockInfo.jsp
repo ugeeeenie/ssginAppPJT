@@ -200,10 +200,14 @@
   <script src="/resources/js/app-dashboard.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function(){
+    	// 전화번호 substr 띄우기
+    	var phone = "${phone}";
+    	phone = phone.substr(0, 3) + " - " + phone.substr(3, 1) + "*** - " + phone.substr(7);
+    	$('#myPhone').text(phone + "  님");
+    	
     	//initialize the javascript
     	App.init();
     	App.dashboard();
-    
     });
   </script>
 </body>
