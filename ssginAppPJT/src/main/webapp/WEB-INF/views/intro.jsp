@@ -14,9 +14,15 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <link rel="stylesheet" href="/resources/css/mainStyle.css" type="text/css"/>
+  <style type="text/css">
+  /* img {
+  	width : 100%;
+  	height : 640px;
+  } */
+  </style>
 </head>
 <body>
-    <div class="am-content am-nosidebar-left">
+    <!-- <div class="am-content am-nosidebar-left"> -->
       <!-- 캐러셀 시작 -->
 		<!-- <div class="form-group text-center"> -->
 			<div id="carousel-example-generic" class="carousel slide">
@@ -30,29 +36,29 @@
 				<!-- Carousel items -->
 				<div class="carousel-inner">
 					<div class="item active">
-						<img src="/resources/img/intro_n_1.png" alt="First slide">
+						<img src="/resources/img/intro/intro1.png" alt="First slide" >
 					</div>
 					<div class="item">
-						<img src="/resources/img/intro_n_2.png" alt="Second slide">
+						<img src="/resources/img/intro/intro2.png" alt="Second slide">
 					</div>
 					<div class="item">
-						<img src="/resources/img/intro_n_3.png" alt="Third slide">
-						<a href="/ssgin/joinForm.app"><img src="../../resources/img/go.png"></a>
+						<img src="/resources/img/intro/intro3.png" alt="Third slide">
+						<a href="/ssgin/joinForm.app"><img src="../../resources/img/intro/goBtn.png"></a>
 					</div>
 				</div>
 				<!-- Controls -->
 				<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" wrap="false">
-	              <!-- <span class="icon-prev"></span> -->
-	               <img src="../../left.png" class="control">
+	              <!-- <span class="icon-prev"></span>
+	               <img src="../../left.png" class="control"> -->
 	            </a>
 	            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" wrap="false">
-	             <!--  <span class="icon-next"></span> -->
-	              <img src="../../right.png" class="control">
+	             <!--  <span class="icon-next"></span> 
+	              <img src="../../right.png" class="control">-->
 	            </a>
 			</div>
 		<!-- </div> -->
 	<!-- 캐러셀 끝 -->
-  </div>
+<!--   </div> -->
   <script src="/resources/lib/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="/resources/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
   <script src="/resources/js/main.js" type="text/javascript"></script>

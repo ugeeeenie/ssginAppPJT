@@ -6,7 +6,7 @@
 <!-- Main content -->
     <div class="am-content">
     	<div class="page-head">
-        	<h2 align="center">MY BLOCK</h2>
+        	<h2 align="center">SSG IN 통계</h2>
       	</div>
       	
       <div class="main-content">
@@ -208,6 +208,7 @@
     	//initialize the javascript
     	App.init();
     	App.dashboard();
+    
     });
   </script>
 </body>

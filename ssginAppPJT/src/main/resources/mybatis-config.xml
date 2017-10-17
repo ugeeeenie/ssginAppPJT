@@ -6,6 +6,9 @@
 	<typeAliases>
 		<typeAlias type="com.sinc.ssgin.app.model.vo.UserVO" alias="user"/>
 		<typeAlias type="com.sinc.ssgin.app.model.vo.LogVO" alias="log"/>
+		<typeAlias type="com.sinc.ssgin.app.board.vo.NoticeVO" alias="notice"/>
+		<typeAlias type="com.sinc.ssgin.app.board.vo.FaqVO" alias="faq"/>
+		<typeAlias type="com.sinc.ssgin.app.model.vo.PagingDTO" alias="page"/>
 	</typeAliases>
 </configuration>
 

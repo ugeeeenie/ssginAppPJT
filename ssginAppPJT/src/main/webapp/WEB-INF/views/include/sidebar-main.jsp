@@ -18,7 +18,7 @@
   <style type="text/css">
   .bottom-sidebar {
   	position: relative;
-    top: 232px;
+    top: 280px;
   }
   .bottom-sidebar li {
   	float : left;
@@ -45,31 +45,32 @@
       <div class="content">
        <div class="page-title">
        		<div class="am-logo">
-        	<a href="/ssgin/main.app">
-        		<span style="position:fixed;top:5%;left:20%;">SSG IN. <i class="s7-home"></i></span>
-        	</a><br><br>
-        	<span style="font-size:small;" id="myPhone"></span>
+        	<a href="/ssgin/main.app" style="position:fixed;top:5%;left:10%;">
+        		<img src="../../resources/img/logo/ssgin_letter.png">
+        		<span style="position:relative;left:-15%;top:2px;"><i class="s7-home"></i></span>
+        	</a>
+        	<span style="font-size:small;position:relative;top:50%;" id="myPhone"></span>
         	</div>
         </div>
         <ul class="sidebar-elements">
-          <li class="parents"><a href="/ssgin/statistics.app" class="label label-primary">MY 쓱- BLOCK&nbsp;&nbsp;<i class="s7-plugin"></i></a>
+          <li class="parents"><a href="/ssgin/myBlockInfo.app" class="label label-primary">MY 쓱- BLOCK&nbsp;&nbsp;<i class="s7-plugin"></i></a>
           </li>
           <li class="parents"><a href="/ssgin/authHistory.app" class="label label-primary">인증내역보기&nbsp;&nbsp</a>
           </li>
-          <li class="parents"><a href="/ssgin/myBlockInfo.app" class="label label-primary">SSG IN. 소개&nbsp;&nbsp;</a>
+          <li class="parents"><a href="/ssgin/ssginInfo.app" class="label label-primary">SSG IN. 소개&nbsp;&nbsp;</a>
           </li>
-          <li class="parents"><a href="/ssgin/mypaging.app" class="label label-primary">SETTINGS&nbsp;&nbsp;<i class="s7-settings"></i></a>
+          <li class="parents"><a href="/ssgin/settings.app" class="label label-primary">SETTINGS&nbsp;&nbsp;<i class="s7-settings"></i></a>
           </li>
         </ul>
         <div class="bottom-sidebar">
 	        <ul class="sidebar-elements">
-	          <li class="parents"><a href="/ssgin/notice.app" style="font-size:x-small;padding:10px;"><i class="s7-comment" style="font-size:x-large;"></i><br>공지사항</a>
+	          <li class="parents"><a href="/board/notice.app" style="font-size:x-small;padding:10px;"><i class="s7-comment" style="font-size:x-large;"></i><br>공지사항</a>
 	          </li>
-	          <li class="parents"><a href="/ssgin/faq.app" style="font-size:x-small;padding:10px;"><i class="s7-magic-wand" style="font-size:x-large;"></i><br>FAQ</a>
+	          <li class="parents"><a href="/board/faq.app" style="font-size:x-small;padding:10px;"><i class="s7-magic-wand" style="font-size:x-large;"></i><br>FAQ</a>
 	          </li>
-	          <li class="parents"><a href="/ssgin/event.app" style="font-size:x-small;padding:10px;"><i class="s7-gift" style="font-size:x-large;"></i><br>EVENT</a>
+	          <li class="parents"><a href="/board/event.app" style="font-size:x-small;padding:10px;"><i class="s7-gift" style="font-size:x-large;"></i><br>EVENT</a>
 	          </li>
-	          <li class="parents"><a href="/ssgin/useStore.app" style="font-size:x-small;padding:10px;"><i class="s7-browser" style="font-size:x-large;"></i><br>사용처</a>
+	          <li class="parents"><a href="/board/useStore.app" style="font-size:x-small;padding:10px;"><i class="s7-browser" style="font-size:x-large;"></i><br>사용처</a>
 	          </li>
 	        </ul>
         </div>

@@ -94,12 +94,12 @@ public class UserCtrl {
 		System.out.println("loginUser : " + ((UserVO)session.getAttribute("loginUser")).toString());
 	}
 	
-	//약관동의페이지
+	/*//약관동의페이지
 	@RequestMapping("/userAgree.app")
 	public String userAgreeForm(InfoVO userInfo){
 		System.out.println("useragreeform ok");
 		return "ssgin/userAgreeForm";	
-	}
+	}*/
 
 	//로그내역 테이블에 insert 및 최근 90일 이내 인증내역 아닌 LOG 삭제
 	@RequestMapping("/insertLog.app")
@@ -129,10 +129,10 @@ public class UserCtrl {
 	}
 	
 	//마이페이지
-	@RequestMapping("/mypaging.app")
-	public String myPage(InfoVO userInfo){
-		System.out.println("mypage ok");
-		return "ssgin/myPaging";	
+	@RequestMapping("/settings.app")
+	public String settings(InfoVO userInfo){
+		System.out.println("settings ok");
+		return "ssgin/settings";	
 	}
 	
 	//마이페이지>비밀번호변경페이지
@@ -212,16 +212,19 @@ public class UserCtrl {
 	}
 	
 	//통계보기
-	@RequestMapping("/statistics.app")
-	public String statistics(){
-		System.out.println("statistics ok");
-		return "ssgin/statistics";
+	@RequestMapping("/ssginInfo.app")
+	public String ssginInfo(){
+		System.out.println("ssginInfo ok");
+		
+		return "ssgin/ssginInfo";
 	}
 	
 	//블록정보보기
 	@RequestMapping("/myBlockInfo.app")
-	public String myBlockInfo(HttpSession session){
+	public String myBlockInfo(){
 		System.out.println("myBlockInfo ok");
+		
+		
 		return "ssgin/myBlockInfo";
 	}
 }
