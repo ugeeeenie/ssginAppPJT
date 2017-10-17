@@ -141,7 +141,7 @@
 	                     </div>
 	                     <div class="col-xs-4 form-group-nopadding">
 	                     	<div class="input-group pull-right">
-	                        	<a id="phoneAuthBtn" class="btn btn-space btn-alt3" style="font-size: small; margin: 5% 2%; padding: 5%;">인증번호 받기</a>
+	                        	<a id="phoneAuthBtn" class="btn btn-space btn-alt3" style="font-size: small; margin: 2% 0;">인증번호 받기</a>
 	                     	</div>
 	                     </div>
 	                  </div>

@@ -15,8 +15,14 @@
 	       </h4>
 	     </div>
 	     <div id="ac4-1" class="panel-collapse collapse in" style="min-height:500px;">
-	       <%@include file="../ssgin/authHistory_main.jsp"%>
-	     </div>
+	       <div class="main-content" style="padding:0;">
+			  <div class="row">
+			    <div class="col-md-12">
+			      <ul class="timeline"></ul>
+			    </div>
+			  </div>
+			</div>
+	      </div>
 		</div>
 	</div>
 </div>
@@ -65,25 +71,37 @@
     			for(var i = 0 ; i < data.list.length ; i++){
     				if(data.list[i].auth_success == "Y"){
     					listStr += '<li class="timeline-item success">'
-	             				+ '<div class="timeline-date"><span>인증완료 <img src="../../resources/img/check_v.png" style="width:20%;"></span></div>'
+	             				+ '<div class="timeline-date"><span>인증완료 <img src="../../resources/img/history/check_v.png" style="width:20%;"></span></div>'
 		             			+ '<div class="timeline-content">'
-		              			+ '<div class="timeline-header"><span class="timeline-time">' + data.list[i].auth_time + '</span>'
-		                		+ '<p class="timeline-activity"><a href="#">' + data.list[i].auth_url + '</a></p>'
-		             			+ '</div></div></li>';
+		              			+ '<div class="timeline-header"><span class="timeline-time">' + data.list[i].auth_time + '</span>';
+		              	if(data.list[i].auth_url.length < 24){
+		              		listStr += '<p class="timeline-activity pull-right"><a href="#">' + data.list[i].auth_url + '</a></p>';
+		              	}else{
+		              		listStr += '<p class="timeline-activity pull-right"><a href="#">' + data.list[i].auth_url.substr(0, 24) + '...</a></p>';
+		              	}		
+		              	
+		              	listStr += '</div></div></li>';
     				}else{
     					listStr += '<li class="timeline-item success">'
-             				+ '<div class="timeline-date"><span>인증실패 <img src="../../resources/img/fail_x.png" style="width:20%;"></span></div>'
+             				+ '<div class="timeline-date"><span>인증실패 <img src="../../resources/img/history/fail_x.png" style="width:20%;"></span></div>'
 	             			+ '<div class="timeline-content">'
-	              			+ '<div class="timeline-header"><span class="timeline-time">' + data.list[i].auth_time + '</span>'
-	                		+ '<p class="timeline-activity"><a href="#">' + data.list[i].auth_url + '</a></p>'
-	             			+ '</div></div></li>';
+	              			+ '<div class="timeline-header"><span class="timeline-time">' + data.list[i].auth_time + '</span>';
+              			if(data.list[i].auth_url.length < 24){
+		              		listStr += '<p class="timeline-activity pull-right"><a href="#">' + data.list[i].auth_url + '</a></p>';
+		              	}else{
+		              		listStr += '<p class="timeline-activity pull-right"><a href="#" class="pull-right">' + data.list[i].auth_url.substr(0, 24) + '...</a></p>';
+		              	}		
+			              	
+			            listStr += '</div></div></li>';
     				}
     			}
     			
     			if(data.paging.totalCount > data.paging.endRowNum){
     				listStr += '<li class="timeline-loadmore" style="list-style:none;">'
-    						+ '<a href="javascript:loadMore(' + data.paging.pageNo + ');" class="load-more-btn">'
+    						+ '<a href="javascript:loadMore(' + data.paging.pageNo + 1 + ');" class="load-more-btn">'
     						+ '더보기</a></li>';
+    			}else{
+    				$('.timeline').css('margin', '0 auto');
     			}
     			
     			$('.timeline').append(listStr);
