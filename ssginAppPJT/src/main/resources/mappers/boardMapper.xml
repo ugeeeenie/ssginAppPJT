@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sinc.ssgin.board.mapper">
+	<select id="noticelist" resultType="notice" parameterType="page">
+		SELECT *
+		FROM (SELECT ROWNUM AS RNUM, GET.* 
+				FROM (SELECT * 
+						FROM SSGIN_NOTICE_TBL
+						ORDER BY NOTICE_SEQ ASC) GET
+				WHERE ROWNUM <![CDATA[<]]>= #{endRowNum})
+		WHERE RNUM <![CDATA[>]]>= #{startRowNum}
+	</select>
+
+	<select id="noticeCnt" resultType="int">
+ 		SELECT COUNT(*) CNT
+ 		FROM SSGIN_NOTICE_TBL
+ 	</select>
+ 	
+ 	<select id="faqCnt" resultType="int">
+ 		SELECT COUNT(*) CNT
+ 		FROM SSGIN_FAQ_TBL
+ 	</select>
+ 	
+ 	<select id="faqlist" resultType="faq" parameterType="page">
+		SELECT *
+		FROM ( 	SELECT ROWNUM AS RNUM, GET.* 
+				FROM ( 	SELECT * 
+						FROM SSGIN_FAQ_TBL
+						ORDER BY FAQ_SEQ ASC ) GET
+				WHERE ROWNUM <![CDATA[<]]>= #{endRowNum} )
+		WHERE RNUM <![CDATA[>]]>= #{startRowNum}
+	</select>
+</mapper>  

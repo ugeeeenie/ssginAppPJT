@@ -31,6 +31,12 @@ public class UserCtrl {
 	public String loginForm(UserVO user, HttpSession session){
 		System.out.println("loginform ctrl ok");
 		
+		//if(session.getAttribute("loginUser") == null){
+			session.setAttribute("loginUser", new UserVO(63, 
+					"0x3fa26ff38e8d4a8333e824e2dedcbfc5db475742d68cd1adf76aa98f5f23566f", 1791683,
+					"0xc44bfa769df33bc6d47d510b1f691ddf8c9d3f4a17b67d22ff8c631691598929", "Y"));
+		//}
+		
 		System.out.println(((UserVO)session.getAttribute("loginUser")).toString());
 		
 		return "ssgin/loginForm";
@@ -101,7 +107,7 @@ public class UserCtrl {
 		return "ssgin/userAgreeForm";	
 	}*/
 
-	//로그내역 테이블에 insert 및 최근 90일 이내 인증내역 아닌 LOG 삭제
+	//로그내역 테이블에 insert
 	@RequestMapping("/insertLog.app")
 	@ResponseBody
 	public void mainForm(LogVO log, HttpSession session){
@@ -120,9 +126,9 @@ public class UserCtrl {
 		/* 임시 */
 		phoneNum = "01044883094";
 		session.setAttribute("phone", phoneNum);
-		session.setAttribute("loginUser", new UserVO(10, "0x3fa26ff38e8d4a8333e824e2dedcbfc5db475742d68cd1adf76aa98f5f23566f", 1781008,
+		/*session.setAttribute("loginUser", new UserVO(10, "0x3fa26ff38e8d4a8333e824e2dedcbfc5db475742d68cd1adf76aa98f5f23566f", 1781008,
 														"0xd0c4ddab3a4bb4ba591b7c6506811dd8061d029ef50d0fc8d648b3e9e5875df1", "Y"));
-		
+		*/
 		System.out.println("loginUser : " + ((UserVO)session.getAttribute("loginUser")).toString());
 		
 		return "ssgin/mainForm";	
@@ -156,24 +162,38 @@ public class UserCtrl {
 		return "ssgin/userDelForm";
 	}
 	
+	//탈퇴트랜잭션전송
+	@RequestMapping("/leave.app")
+	public String leave(String state, Model model){
+		System.out.println("leave ok");
+		
+		System.out.println("state : " + state);
+		model.addAttribute("state", state);
+		
+		return "ssgin/leaveIng";	
+	}
+	
 	//state="reset" : 비밀번호 재설정을 위한 탈퇴, state="delete" : 마이페이지>계정해지
 	@RequestMapping("/leaveUser.app")
 	@ResponseBody
-	public void leaveUser(UserVO user, String state){
+	public void leaveUser(String state, HttpSession session){
 		System.out.println("leaveUser ok");
 		
-		if(state == "reset"){
+		if(state.equals("reset")){
 			// USER TABLE UPDATE
-			service.updateUserFlagService(user);
+			service.updateUserFlagService((UserVO)session.getAttribute("loginUser"));
 		}
 		
-		else if(state == "delete"){
-			// USER TABLE에서 삭제
-			service.deleteUserService(user);
-			
+		else if(state.equals("delete")){
 			// LOG TABLE에서 삭제(계정해지 경우에만) => 비밀번호 재설정일 때는 LOG 내역은 남김
-			service.deleteLogService(user);
+			service.deleteLogService((UserVO)session.getAttribute("loginUser"));
+						
+			// USER TABLE에서 삭제
+			service.deleteUserService((UserVO)session.getAttribute("loginUser"));
 		}
+		
+		// session 삭제
+		session.removeAttribute("loginUser");
 	}
 	
 	//인증내역보기

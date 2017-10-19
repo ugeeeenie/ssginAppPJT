@@ -52,6 +52,7 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public void updateUserFlagRow(UserVO user) {
 		System.out.println("updateUserFlagRow ok");
+		System.out.println("FLAG USER : " + user.toString());
 		session.update(PREFIX+"updateFlag", user);
 	}
 

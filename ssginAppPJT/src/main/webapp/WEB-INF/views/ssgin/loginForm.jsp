@@ -80,13 +80,19 @@
   <script src="/resources/js/ethereum/clipboard.min.js"></script>	
   <script src="/resources/js/ethereum/ethereum.js"></script>
   <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script> 
-  <script src="/resources/js/ethereum/ssginLeave.js" type="text/javascript"></script> 
-  
   <script>
     //android -> javascript
     //안드로이드 버튼 클릭시 
     $(document).ready(function(){
-    	location.href="app://finger"
+    	location.href = "app://finger";
+    });
+    
+    $('#resetBtn').click(function(){
+    	console.log("reset");
+    	
+    	if(confirm("비밀번호 재설정은 계정 설정을 처음부터 다시 진행합니다. 계속하시겠습니까?") == true){
+    		location.href = "/ssgin/leave.app?state=reset";
+    	}
     });
     
     function getNum(phone) {

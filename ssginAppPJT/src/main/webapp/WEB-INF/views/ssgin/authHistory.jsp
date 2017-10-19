@@ -7,7 +7,7 @@
 <div class="am-content" style="max-height:570px;">
 	<div id="accordion" class="panel-group accordion accordion-semi">
 	   <div class="panel panel-default">
-	     <div class="panel-heading success">
+	     <div class="panel-heading danger">
 	       <h4 class="panel-title">
 	       	<a id="toggleCollapse" data-toggle="collapse" data-parent="#accordion" href="#ac4-1" style="text-align:center; border:1px solid;">
 	       		<i id="arrow" class="icon s7-angle-down-circle"></i> 인증내역보기

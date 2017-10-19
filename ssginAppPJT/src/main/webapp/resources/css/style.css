@@ -11257,14 +11257,14 @@ button:focus {
 }
 .gritter-item-wrapper .gritter-item .gritter-content.gritter-with-image,
 .gritter-item-wrapper .gritter-item .gritter-content.gritter-without-image {
-  padding: 15px 35px 17px 15px;
+  padding: 15px 35px 17px 5px;
   color: #d9d9d9;
   width: 267px;
   display: table-cell;
 }
 .rtl .gritter-item-wrapper .gritter-item .gritter-content.gritter-with-image,
 .rtl .gritter-item-wrapper .gritter-item .gritter-content.gritter-without-image {
-  padding: 15px 15px 17px 35px;
+  padding: 15px 15px 17px 5px;
 }
 .gritter-item-wrapper .gritter-item .gritter-content.gritter-with-image .gritter-close,
 .gritter-item-wrapper .gritter-item .gritter-content.gritter-without-image .gritter-close {

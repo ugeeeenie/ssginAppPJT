@@ -12,7 +12,7 @@
             <div id="accordion1" class="panel-group accordion">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a href="/ssgin/updatePwd.app" id="resetBtn" class="collapsed"><i class="icon s7-angle-down"></i> 비밀번호 변경 </a></h4>
+                  <h4 class="panel-title"><a id="resetBtn" class="collapsed"><i class="icon s7-angle-down"></i> 비밀번호 변경 </a></h4>
                 </div>
               </div>
               <div class="panel panel-default">
@@ -54,8 +54,8 @@
   <script src="/resources/js/main.js" type="text/javascript"></script>
   <script src="/resources/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
   <!-- <script src="/resources/js/app-dashboard.js" type="text/javascript"></script> -->
-  <!-- <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script>  -->
-  <script src="/resources/js/ethereum/ssginLeave.js" type="text/javascript"></script> 
+  <!-- <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script>
+  <script src="/resources/js/ethereum/ssginLeave.js" type="text/javascript"></script>   -->
   <script type="text/javascript">
     $(document).ready(function(){
     	// 전화번호 substr 띄우기
@@ -71,6 +71,22 @@
     $('#appInfo').click(function(){
 		alert("SSG IN. Application ver 1.0 Made by Shinsegae I&C");
 	});
+    
+    $('#resetBtn').click(function(){
+    	console.log("reset");
+    	
+    	if(confirm("비밀번호 변경은 계정 설정을 처음부터 다시 진행합니다. 계속하시겠습니까?") == true){
+    		location.href = "/ssgin/leave.app?state=reset";
+    	}
+    });
+    
+    $('#userDelete').click(function(){
+    	console.log("userDelete");
+    	
+    	if(confirm("계정을 해지하시면 이전 데이터는 모두 삭제됩니다. 계속하시겠습니까?") == true){
+    		location.href = "/ssgin/leave.app?state=delete";
+    	}
+    });
   </script>
 </body>
 </html>

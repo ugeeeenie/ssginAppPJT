@@ -63,9 +63,9 @@
             <div class="block-wizard panel panel-default">
               <div id="wizard1" class="wizard wizard-ux">
                 <ul class="steps">
-                  <li data-step="1" class="active">Step 1<span class="chevron"></span></li>
-                  <li data-step="2">Step 2<span class="chevron"></span></li>
-                  <li data-step="3">Step 3<span class="chevron"></span></li>
+                  <li data-step="1" class="active" id="steps1">Step 1<span class="chevron"></span></li>
+                  <li data-step="2" id="steps2">Step 2<span class="chevron"></span></li>
+                  <li data-step="3" id="steps3">Step 3<span class="chevron"></span></li>
                 </ul>
                 <div class="step-content">
                   <div data-step="1" class="step-pane active" id="data1">
@@ -114,7 +114,7 @@
                           <div class="input-group pull-right">
                            <div class="btn-group radio-group">
                               <label class="btn btn-primary btn-radio">
-                              	 남 <input type="radio" value="1" name="user_sex"></label>
+                              	 남 <input type="radio" value="1" name="user_sex" checked></label>
                               <label class="btn btn-primary btn-radio not-active">
                               	 여 <input type="radio" value="2" name="user_sex"></label>
                            </div>
@@ -204,6 +204,9 @@
   		  //location.href = "/ssgin/joinForm.app";
   		  $('#data1').prop('class', 'step-pane');
   		  $('#data2').prop('class', 'step-pane active');
+  		  
+  		  $('.steps').find('#steps1').prop('class', 'complete');
+  		  $('.steps').find('#steps2').prop('class', 'active');  		  
   	  }
     }
     
@@ -217,14 +220,20 @@
 	      
 	    var num = $('#randomNum').val();
 	    
-    	  if(num == $('#authNum').val()){
-    		  alert("인증 성공!");
-    		  
-    		  $('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
-    	      $('#joinFormStep2').submit();
-    	  }else{
-    		  alert("인증번호가 일치하지 않습니다.");
-    	  } 
+	    if($('#authNum').is(":disabled")){
+	    	alert("인증번호 받기를 클릭하세요");
+	    	return;
+	    }else{
+	    	if(num == $('#authNum').val()){
+	    		  alert("휴대폰 인증에 성공하였습니다.");
+	    		  
+	    		  $('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
+	    	      $('#joinFormStep2').submit();
+	    	}else{
+	    		  alert("인증번호가 일치하지 않습니다.");
+	    		  return;
+	    	} 
+	    }
     }
   </script>
 </body>
