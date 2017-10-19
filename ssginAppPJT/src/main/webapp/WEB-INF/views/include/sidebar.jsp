@@ -18,7 +18,7 @@
   <style type="text/css">
   .bottom-sidebar {
   	position: relative;
-    top: 280px;
+    top: 345px;
   }
   .bottom-sidebar li {
   	float : left;
@@ -41,11 +41,16 @@
       <div class="content">
        <div class="page-title">
        	<div class="am-logo">
-        	<a href="/ssgin/main.app" style="position:fixed;top:5%;left:10%;">
-        		<img src="../../resources/img/logo/ssgin_letter.png">
-        		<span style="position:relative;left:-15%;top:2px;"><i class="s7-home"></i></span>
-        	</a>
-        	<span style="font-size:small;position:relative;top:50%;" id="myPhone"></span>
+       		<div class="row" style="position:relative;top:20%;">
+       			<a href="/ssgin/main.app">
+	        		<img src="../../resources/img/logo/ssgin_letter.png">
+	        		<span style="position:relative;left:-10%;top:2px;"><i class="s7-home"></i></span>
+        		</a>
+       		</div>
+        	<div class="row" style="position:relative;top:5%;">
+	        	<img src="../../resources/img/logo/chain.png" style="width:8%;top:5px;position:relative;">
+	        	<span style="font-size:small;position:relative;top:50%;" id="myPhone"></span>
+         	</div>
          </div>
         </div>
         <ul class="sidebar-elements">

@@ -1,6 +1,6 @@
 Web3 = require('web3');
 web3 = new Web3();
-web3.setProvider(new Web3.providers.HttpProvider('http://10.149.178.207:8545')); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
+web3.setProvider(new Web3.providers.HttpProvider('http://10.149.179.227:8545')); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
 
 var abi = JSON.parse('[{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"joinPossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"existID","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"memberJoin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"ssginAuth","outputs":[{"name":"id","type":"bytes32"},{"name":"pwd","type":"bytes32"},{"name":"flag","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"ssginWithID","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"}],"name":"memberLeave","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"idList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"leavePossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]');
 var ssginContract = web3.eth.contract(abi);
@@ -47,7 +47,19 @@ $(function(){
 				web3.personal.unlockAccount(adminAddr, adminPwd, function(e2, success){
 					contractInstance.memberJoin(id, pwd, {gas: 140000, from: adminAddr}, function(e3, txHash){
 						if(!e3){
-							$("#filter").append('Smart Contract Transation ID  : <span style="background:#C0FFFF;">' + txHash +' </span><br>');
+							$.ajax({
+								url: "/ssgin/joinDB.app",
+								type: "post",
+								data: { user_id : id,
+										user_block : 175869,
+										user_tx : txHash },
+								success : function(){
+									sleep(10000);
+									alert("블록체인 SSG IN 시스템 가입을 환영합니다^^");
+									location.href = "/ssgin/loginForm.app";
+								}
+							});
+							/*$("#filter").append('Smart Contract Transation ID  : <span style="background:#C0FFFF;">' + txHash +' </span><br>');
 							var blockFilter = web3.eth.filter('latest');
 							$("#filter").append('Transaction Start <br>');
 							blockFilter.watch(function(e4, blockHash) {
@@ -96,7 +108,8 @@ $(function(){
 								else{
 									alert("e4 : " + e4);
 								}
-							});//end watch
+							});*/ 
+							//end watch
 						}
 						else{
 							alert("e3 : " + e3);
@@ -115,7 +128,7 @@ $(function(){
 					type: "post",
 					data: { user_id : id },
 					success : function(){
-						$('.wrap-loading').addClass('display-none');
+						/*$('.wrap-loading').addClass('display-none');*/
 						location.href = "/ssgin/loginForm.app";
 					}
 				});

@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <div class="page-title"><span>SSG IN.</span></div>
-          <a href="/ssgin/mypaging.app" style="color:white; position: absolute; left: 3%; font-size: 18pt; top: 25%;">
+          <a href="/ssgin/settings.app" style="color:white; position: absolute; left: 3%; font-size: 18pt; top: 25%;">
           <span class="icon-bar"><span></span><span></span><span></span></span>←</a>
         </div>
       </div>

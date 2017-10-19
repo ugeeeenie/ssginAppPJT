@@ -10,20 +10,20 @@ var App = (function () {
 
     $('#not-basic').click(function(){
       $.gritter.add({
-        title: 'Samantha new msg!',
-        text: "You have a new Thomas message, let's checkout your inbox.",
-        image: App.conf.assetsPath + '/' +  App.conf.imgPath + '/avatar.jpg',
-        time: '',
-        class_name: 'img-rounded'
+    	  title: '지문사용 등록안내',
+          text: 'SSG IN. 시스템은 휴대폰에 등록되어 있는 지문을 이용합니다.<br>지문인증 사용시 결제비밀번호를 제출한 것과 동일하게 간주됩니다.<br>휴대폰에 등록된 지문 관리 및 이용에 대한 책임은 이용자 본인에게 있습니다.',
+          image: '/resources/img/intro/fingerprint.png',
+          class_name: 'clean img-rounded',
+          time: '',
       });
       return false;
     });
     
     $('#not-theme').click(function(){
       $.gritter.add({
-        title: 'Welcome home!',
-        text: 'You can start your day checking the new messages.',
-        image: App.conf.assetsPath + '/' +  App.conf.imgPath + '/avatar6.jpg',
+        title: '지문사용 등록안내',
+        text: 'SSG IN. 시스템은 휴대폰에 등록되어 있는 지문을 이용합니다.<br>지문인증 사용시 결제비밀번호를 제출한 것과 동일하게 간주됩니다.<br>휴대폰에 등록된 지문 관리 및 이용에 대한 책임은 이용자 본인에게 있습니다.',
+        image: '/resources/img/intro/fingerprint.png',
         class_name: 'clean img-rounded',
         time: '',
       });

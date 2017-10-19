@@ -22,46 +22,49 @@
 		right:0;
 		top:0;
 		bottom:0;
-		background: rgba(0,0,0,0.2); 
+		/* background: rgba(0,0,0,0.2);  */
+		background: rgb(12, 165, 176);
 		filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
 		z-index : 99999;
 	}
 	.wrap-loading div{ /*로딩 이미지*/
 		position: fixed;
-        top:50%;
-        left:50%;
+        top:30%;
+        /* left:50%;
         margin-left: -21px;
-        margin-top: -21px;
+        margin-top: -21px; */
     }
     .display-none{ /*감추기*/
         display:none;
     }
 	</style>
 </head>
-<body>
+<body style="overflow-y:hidden;">
 <div class="am-wrapper am-nosidebar-left">
-    <div class="am-top-header">
+    <<!-- div class="am-top-header">
       <div class="container-fluid">
         <div class="navbar-header">
           <div class="page-title"><span>SSG IN.</span></div>
     	</div>
       </div>
-    </div>
+    </div> -->
     
-    <div class="wrap-loading">
-		<div><img src="/resources/img/ajax-loader.gif" /></div>
-	</div>
+   
 		
     <div class="am-content">
       <!-- Main content -->
       <div class="main-content">
+      	 <div class="wrap-loading">
+			<div><img src="/resources/img/intro/loading.gif" style="width:100%;"/></div>
+			<div style="left:42%;top:70%;"><span style="font-weight:bold;font-size:14pt;color:#f8f4e4;">SSG- IN...</span></div>
+		</div>
 		<input type="hidden" id="name" value="${userInfo.user_name}">
 		<input type="hidden" id="birth" value="${userInfo.user_birth}">
 		<input type="hidden" id="gender" value="${userInfo.user_sex}">
 		<input type="hidden" id="phone" value="${userInfo.user_phone}">
 		<input type="hidden" id="pwd" value="${userInfo.user_pwd}">
 		
-		<div class="panel panel-info">
+		<div class="panel panel-info" style="width:100%;">
 			<div class="panel-heading">
 				<h3 class="panel-title">Filter</h3>
 			</div>
