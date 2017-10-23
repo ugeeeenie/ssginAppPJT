@@ -107,8 +107,9 @@
                       </div>
                       <div class="row">
                         <div class="col-xs-8 form-group-nopadding">
-                          <input type="text" name="user_birth" parsley-trigger="change" required placeholder="생년월일 6자리(ex.900101)" autocomplete="off" class="form-control"
-                        maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
+                        	<input type="tel" name="user_birth" required placeholder="생년월일 6자리(ex.900101)" 
+                        	autocomplete="off" class="form-control" size="6" maxlength="6" 
+                        	onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
                         </div>
                         <div class="col-xs-4 form-group-nopadding">
                           <div class="input-group pull-right">
@@ -130,14 +131,17 @@
                           </select>
                         </div>
                         <div class="col-xs-9 form-group-nopadding">
-                          <input type="text" name="user_phone" parsley-trigger="change" required placeholder="핸드폰번호 전체를 입력해주세요('-'제외)" autocomplete="off" class="form-control"
-                        maxlength="11" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
+                          <!-- <input type="text" name="user_phone" parsley-trigger="change" required placeholder="핸드폰번호 전체를 입력해주세요('-'제외)" autocomplete="off" class="form-control"
+                        maxlength="11" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"> -->
+                        <input type="tel" name="user_phone" required placeholder="핸드폰번호 전체를 입력해주세요('-'제외)" 
+                        	autocomplete="off" class="form-control" size="11" maxlength="11" 
+                        	onkeyup="this.value=this.value.replace(/[^0-9]/g,'')">
                         </div>
                       </div>
 	                  <div class="row">
 	                     <div class="col-xs-8 form-group-nopadding">
-	                        <input type="text" id="authNum" parsley-trigger="change" required autocomplete="off" class="form-control" maxlength="6" 
-	                          		onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" disabled>
+	                     	<input type="tel" id="authNum" required autocomplete="off" class="form-control" size="6" maxlength="6" 
+	                     		onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" disabled>
 	                     </div>
 	                     <div class="col-xs-4 form-group-nopadding">
 	                     	<div class="input-group pull-right">

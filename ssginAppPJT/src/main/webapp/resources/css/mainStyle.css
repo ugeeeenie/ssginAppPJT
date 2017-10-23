@@ -235,6 +235,9 @@ input[type="radio"] {
        box-sizing: border-box;
   padding: 0;
 }
+input[type=number] {
+	-webkit-text-security: disc;
+}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   height: auto;
@@ -10492,7 +10495,7 @@ button:focus {
   position: relative;
   left: 0;
   margin-left: 100px;
-  min-height: 100%;
+  min-height: 708px;
 }
 .rtl .am-content {
   left: auto;
@@ -10533,7 +10536,7 @@ button:focus {
 }
 @media (max-width: 1450px) {
   .main-content {
-    height: 100%;
+    min-height: 708px;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     padding-left: 15px;
@@ -14192,10 +14195,11 @@ fieldset[disabled] .btn-default.active {
   background-color: #555555;
 }
 .btn-dark {
-  border-color: #302f2f;
-  color: #fff;
-  background-color: #3d3c3c;
-  border-color: #3d3c3c;
+	color: #fff;
+  	background-color: #3d3c3c;
+  	border: 1px solid #4e4e4e;
+  /* border-color: #302f2f;
+  border-color: #3d3c3c; */
 }
 .btn-dark:focus,
 .btn-dark.focus {
