@@ -18,9 +18,9 @@
   <style type="text/css">
   .bottom-sidebar {
   	position: relative;
-    top: 345px;
+    top: 300px;
   }
-  .bottom-sidebar li {
+  .bottom-sidebar li {dn
   	float : left;
   	width : 25%;
   }

@@ -21,7 +21,7 @@
   } */
   </style>
 </head>
-<body>
+<body style="overflow-y:hidden;">
     <!-- <div class="am-content am-nosidebar-left"> -->
       <!-- 캐러셀 시작 -->
 		<!-- <div class="form-group text-center"> -->

@@ -1,6 +1,6 @@
 Web3 = require('web3');
 web3 = new Web3();
-web3.setProvider(new Web3.providers.HttpProvider('http://10.149.179.227:8545')); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
+web3.setProvider(new Web3.providers.HttpProvider('http://10.149.178.247:8545')); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
 
 var abi = JSON.parse('[{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"joinPossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"existID","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"memberJoin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"ssginAuth","outputs":[{"name":"id","type":"bytes32"},{"name":"pwd","type":"bytes32"},{"name":"flag","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"ssginWithID","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"}],"name":"memberLeave","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"idList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"leavePossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]');
 var ssginContract = web3.eth.contract(abi);
@@ -120,18 +120,19 @@ $(function(){
 			
 			if(result == "idAlreadyExist"){
 				console.log(result);
-				$('.wrap-loading').addClass('display-none');
+				/*$('.wrap-loading').addClass('display-none');*/
 				alert("사용자가 시스템에 존재합니다.");
 				
-				$.ajax({
+				location.href = "/ssgin/loginForm.app";
+				/*$.ajax({
 					url: "/ssgin/loginUserCheck.app",
 					type: "post",
 					data: { user_id : id },
 					success : function(){
-						/*$('.wrap-loading').addClass('display-none');*/
+						$('.wrap-loading').addClass('display-none');
 						location.href = "/ssgin/loginForm.app";
 					}
-				});
+				});*/
 			}
 		}
 		
