@@ -28,13 +28,18 @@ public class UserCtrl {
 	
 	//로그인폼페이지
 	@RequestMapping("/loginForm.app")
-	public String loginForm(UserVO user, HttpSession session){
+	public String loginForm(UserVO user, String url, HttpSession session){
 		System.out.println("loginform ctrl ok");
 		
+		if(url == null){
+			url = "ssgin";
+		}
+		
+		session.setAttribute("url", url);
+		
 		//if(session.getAttribute("loginUser") == null){
-			session.setAttribute("loginUser", new UserVO(63, 
-					"0x3fa26ff38e8d4a8333e824e2dedcbfc5db475742d68cd1adf76aa98f5f23566f", 1791683,
-					"0xc44bfa769df33bc6d47d510b1f691ddf8c9d3f4a17b67d22ff8c631691598929", "Y"));
+			session.setAttribute("loginUser", new UserVO(64, "0x987c07ecba6bb89675c78259a1c40abd042b7cf987af73ac73960106951e2e1c", 175869,
+															"0xb9605ed34c20712529ca535806d0d9fa9058ac2d960a7e7a09f93ad78ea8fea2", "Y"));
 		//}
 		
 		System.out.println(((UserVO)session.getAttribute("loginUser")).toString());

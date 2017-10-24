@@ -18,7 +18,7 @@
   <style type="text/css">
   .bottom-sidebar {
   	position: relative;
-    top: 300px;
+    top: 280px;
   }
   .bottom-sidebar li {
   	float : left;
