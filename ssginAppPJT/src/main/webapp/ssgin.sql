@@ -28,7 +28,10 @@ VALUES (63, '0x3fa26ff38e8d4a8333e824e2dedcbfc5db475742d68cd1adf76aa98f5f23566f'
 	1791683, '0xc44bfa769df33bc6d47d510b1f691ddf8c9d3f4a17b67d22ff8c631691598929', 'Y');
 
 DELETE FROM SSGIN_USER_TBL
-WHERE	USER_NO = 62;
+WHERE	USER_NO = 104;
+
+DELETE FROM SSGIN_LOG_TBL
+WHERE	USER_NO = 104;
 
 UPDATE SSGIN_USER_TBL
 SET		USER_FLAG = 'N'
@@ -73,29 +76,29 @@ INSERT INTO SSGIN_LOG_TBL
 VALUES(2, '2017-10-01 14:51:50', 'Y', 'http://blog.naver.com');
 
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.ssgin.co.kr');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.ssgin.co.kr');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.naver.com');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.naver.com');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.google.co.kr');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.google.co.kr');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.epost.go.kr/main.retrieveMainPage.comm');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.epost.go.kr/main.retrieveMainPage.comm');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'https://www.emart24.co.kr/index.asp');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'https://www.emart24.co.kr/index.asp');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://fashion.sivillage.com/hallFA');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://fashion.sivillage.com/hallFA');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.naver.com');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.naver.com');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.daum.net');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.daum.net');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.youtube.com');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.youtube.com');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.google.co.kr');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.google.co.kr');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://www.konkuk.ac.kr');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://www.konkuk.ac.kr');
 INSERT INTO SSGIN_LOG_TBL
-VALUES(10, '2017-10-01 14:51:50', 'Y', 'http://blog.naver.com');
+VALUES(64, '2017-10-01 14:51:50', 'Y', 'http://blog.naver.com');
 
 UPDATE SSGIN_LOG_TBL
 SET		AUTH_TIME = '2017-10-07 18:53:30'

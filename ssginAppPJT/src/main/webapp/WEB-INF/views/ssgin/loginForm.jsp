@@ -71,6 +71,7 @@
 	<input type="hidden" id="gender" value="${userInfo.user_sex}">
 	<input type="hidden" id="phone" value="${userInfo.user_phone}"> --%>
 	<input type="hidden" id="hash" value="${loginUser.user_id}">
+	<input type="hidden" id="url" value="${url}">
 
   <script src="/resources/lib/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="/resources/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
@@ -100,9 +101,29 @@
     }
         
     function authFinger() {
-        $('#phoneForm').attr('action', '/ssgin/main.app');
-        $('#phoneForm').submit();
-    }
+        var url = $('#url').val();
+        var authUrl = "";
+        var action = "";
+        
+        if(url == "ssgin"){
+         authUrl = "http://www.ssgin.com";
+         action = "/ssgin/main.app";
+        }
+        if(url == "ssgpay"){
+         authUrl = "http://www.ssgpay.com";
+         action = "http://10.149.178.62:8081/main.ssgpay";
+        }
+        
+        $.ajax({
+	    	url : "/ssgin/insertLog.app",
+	    	type : "post",
+	    	data : { auth_url : authUrl },
+	      	success : function(){
+	      		$('#phoneForm').attr('action', action);
+	          	$('#phoneForm').submit();
+	      	}
+	   	});
+     }
     </script>
   </body>
 </html>

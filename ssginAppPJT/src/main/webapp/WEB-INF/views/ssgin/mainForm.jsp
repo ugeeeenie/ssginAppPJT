@@ -20,17 +20,16 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-            	<img src="../../resources/img/board/main_event.png" style="width:100%;">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="accordion" class="panel-group accordion accordion-semi">
+        <div class="row">
+	        <div class="col-md-6">
+	          <div class="panel panel-default">
+	            <div class="panel-body">
+	            	<img src="../../resources/img/board/main_event.png" style="width:100%;">
+	            </div>
+	          </div>
+	        </div>
+      	</div>
+      	<div id="accordion" class="panel-group accordion accordion-semi">
         <div class="panel panel-default">
           <div class="panel-heading success">
             <h4 class="panel-title">
@@ -42,6 +41,7 @@
           <div id="ac4-1" class="panel-collapse collapse" style="min-height:500px;">
           </div>
         </div>
+      </div>
       </div>
     </div>
     <!-- End Main content -->
