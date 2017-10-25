@@ -14,9 +14,7 @@
  		FROM (SELECT ROWNUM rnum, A.* 
  				FROM (SELECT 	*
  						FROM 	SSGIN_LOG_TBL
- 						WHERE 	USER_NO IN (SELECT 	USER_NO
- 						 					FROM	SSGIN_USER_TBL
- 											WHERE	USER_ID = #{loginUser.user_id})
+ 						WHERE 	USER_NO = #{loginUser.user_no}
 				 		ORDER BY AUTH_TIME DESC) A
 				WHERE ROWNUM <![CDATA[<]]>= #{paging.endRowNum})
 		WHERE rnum <![CDATA[>]]>= #{paging.startRowNum} 
@@ -24,9 +22,7 @@
  	
  	<select id="historyCount" parameterType="user" resultType="int">
  		SELECT COUNT(*) FROM SSGIN_LOG_TBL
- 		WHERE USER_NO IN (SELECT USER_NO
- 						 FROM	SSGIN_USER_TBL
- 						 WHERE	USER_ID = #{user_id})
+ 		WHERE USER_NO = #{user_no}
  	</select>
  	
  	<select id="loginUser" parameterType="user" resultType="user">
@@ -47,9 +43,7 @@
  	
  	<delete id="deleteLog" parameterType="user">
  		DELETE 	FROM SSGIN_LOG_TBL
- 		WEHRE	USER_NO IN (SELECT	USER_NO
- 							FROM	SSGIN_USER_TBL
- 							WHERE	USER_ID = #{user_id})
+ 		WEHRE	USER_NO = #{user_no}
  	</delete>
  	
  	<update id="updateFlag" parameterType="user">

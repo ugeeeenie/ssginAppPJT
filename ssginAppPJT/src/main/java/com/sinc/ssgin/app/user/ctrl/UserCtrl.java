@@ -89,6 +89,9 @@ public class UserCtrl {
 		System.out.println("user : " + user.toString());
 		service.joinService(user);
 		
+		// userInfo 임시 저장 session 삭제
+		session.removeAttribute("userInfo");
+		
 		session.setAttribute("loginUser", service.loginUserService(user));
 		System.out.println("loginUser : " + ((UserVO)session.getAttribute("loginUser")).toString());
 	}
@@ -115,7 +118,7 @@ public class UserCtrl {
 	//로그내역 테이블에 insert
 	@RequestMapping("/insertLog.app")
 	@ResponseBody
-	public void mainForm(LogVO log, HttpSession session){
+	public void insertLog(LogVO log, HttpSession session){
 		System.out.println("insertLog ok");
 		
 		// LOG 테이블에 저장
@@ -125,7 +128,7 @@ public class UserCtrl {
 	
 	//메인페이지
 	@RequestMapping("/main.app")
-	public String mainForm(String phoneNum, Model model, HttpSession session){
+	public String mainForm(String phoneNum, HttpSession session){
 		System.out.println("mainForm ok");
 		
 		/* 임시 */
@@ -232,6 +235,7 @@ public class UserCtrl {
 		Map<String, Object> pageMap = new HashMap<String, Object>();
 		pageMap.put("paging", paging);
 		pageMap.put("list", list);
+		System.out.println(list);
 		
 		return pageMap;
 	}

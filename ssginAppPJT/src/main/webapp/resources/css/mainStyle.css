@@ -10495,7 +10495,7 @@ button:focus {
   position: relative;
   left: 0;
   margin-left: 100px;
-  min-height: 708px;
+  min-height: 638px;
 }
 .rtl .am-content {
   left: auto;
@@ -10536,7 +10536,7 @@ button:focus {
 }
 @media (max-width: 1450px) {
   .main-content {
-    min-height: 708px;
+    min-height: 560px;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     padding-left: 15px;
@@ -18926,7 +18926,7 @@ fieldset[disabled] .btn-social.btn-tumblr.active {
   padding-top: 15px;
 }
 .panel-group.accordion.accordion-semi .panel-heading.success a {
-  background-color: #7ACCBE;
+  background-color: #ef6262;
 }
 .panel-group.accordion.accordion-semi .panel-heading.warning a {
   background-color: #FFC870;
