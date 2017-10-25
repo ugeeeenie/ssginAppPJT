@@ -63,6 +63,7 @@
 		<input type="hidden" id="gender" value="${userInfo.user_sex}">
 		<input type="hidden" id="phone" value="${userInfo.user_phone}">
 		<input type="hidden" id="pwd" value="${userInfo.user_pwd}">
+		<input type="hidden" id="ip" value="${ip}">
 		
 		<div class="panel panel-info" style="width:100%;">
 			<div class="panel-heading">

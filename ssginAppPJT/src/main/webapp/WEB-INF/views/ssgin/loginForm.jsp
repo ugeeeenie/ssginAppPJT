@@ -72,6 +72,7 @@
 	<input type="hidden" id="phone" value="${userInfo.user_phone}"> --%>
 	<input type="hidden" id="hash" value="${loginUser.user_id}">
 	<input type="hidden" id="url" value="${url}">
+	<input type="hidden" id="ip" value="${ip}">
 
   <script src="/resources/lib/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="/resources/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.min.js" type="text/javascript"></script>

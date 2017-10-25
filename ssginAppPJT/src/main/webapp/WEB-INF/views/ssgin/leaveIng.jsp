@@ -60,6 +60,7 @@
 		</div>
 		<input type="hidden" id="hash" value="${loginUser.user_id}">
 		<input type="hidden" id="state" value="${state}">
+		<input type="hidden" id="ip" value="${ip}">
 		
 		<div class="panel panel-info" style="width:100%;">
 			<div class="panel-heading">

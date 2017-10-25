@@ -14,7 +14,7 @@
         <!--+general-chart("classes", "title", "height", "id", "counter value", "counter desc", tools enabled (use true or false))-->
         <div class="row">
           <div class="col-md-12" style="text-align:center;margin:5% 0 8%;">
-            <img src="../../resources/img/logo/ssg_block.png" style="width:80%;">
+            <img src="../../resources/img/logo/ssg_block.png" style="width:80%;margin-top:-10%;">
           </div>
           <div class="col-md-12">
             <div class="widget widget-pie">
