@@ -22,9 +22,8 @@
 		right:0;
 		top:0;
 		bottom:0;
-		/* background: rgba(0,0,0,0.2);  */
-		background: rgb(12, 165, 176);
-		filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
+		background: white;
+		/*filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
 		z-index : 99999;
 	}
 	.wrap-loading div{ /*로딩 이미지*/
@@ -55,8 +54,9 @@
       <!-- Main content -->
       <div class="main-content">
       	 <div class="wrap-loading">
-			<div><img src="/resources/img/intro/loading.gif" style="width:100%;"/></div>
-			<div style="left:42%;top:70%;"><span style="font-weight:bold;font-size:14pt;color:#f8f4e4;">SSG- OUT...</span></div>
+			<div><img src="/resources/img/logo/loading.gif" style="width:100%;position:fixed;top:20%;"/></div>
+			<div style="left:31%;top:60%;"><span style="font-weight:bold;font-size:24pt;color:#555555;font-family:'NanumSquare';">
+				SSG- OUT..</span></div>
 		</div>
 		<input type="hidden" id="hash" value="${loginUser.user_id}">
 		<input type="hidden" id="state" value="${state}">

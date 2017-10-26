@@ -18,7 +18,7 @@
   <style type="text/css">
   .bottom-sidebar {
   	position: relative;
-    top: 280px;
+    top: 270px;
   }
   .bottom-sidebar li {
   	float : left;
@@ -48,23 +48,23 @@
 	        	<div class="row" style="position:relative;top:20%;">
 	       			<a href="/ssgin/main.app">
 		        		<img src="../../resources/img/logo/ssgin_letter.png">
-		        		<span style="position:relative;left:-10%;top:2px;"><i class="s7-home"></i></span>
+		        		<span style="position:relative;left:-12%;top:-2px;">
+		        			<img src="/resources/img/logo/home_icon.png" style="width:32px;"></span>
 	        		</a>
 	       		</div>
-	        	<div class="row" style="position:relative;top:5%;">
-		        	<img src="../../resources/img/logo/chain.png" style="width:8%;top:5px;position:relative;">
-		        	<span style="font-size:small;position:relative;top:50%;" id="myPhone"></span>
+	        	<div class="row">
+	        		<span style="font-size:small;" id="myPhone"></span>
 	         	</div>
 	         </div>
         </div>
         <ul class="sidebar-elements">
-          <li class="parents"><a href="/ssgin/myBlockInfo.app" class="label label-primary">MY 쓱- BLOCK&nbsp;&nbsp;<i class="s7-plugin"></i></a>
+          <li class="parents"><a href="/ssgin/myBlockInfo.app" class="label label-primary"><i class="s7-plugin"></i>MY 쓱- BLOCK&nbsp;&nbsp;</a>
           </li>
-          <li class="parents"><a href="/ssgin/authHistory.app" class="label label-primary">인증내역보기&nbsp;&nbsp</a>
+          <li class="parents"><a href="/ssgin/authHistory.app" class="label label-primary">인증내역보기</a>
           </li>
-          <li class="parents"><a href="/ssgin/ssginInfo.app" class="label label-primary">SSG IN. 소개&nbsp;&nbsp;</a>
+          <li class="parents"><a href="/ssgin/ssginInfo.app" class="label label-primary">SSG IN. 소개</a>
           </li>
-          <li class="parents"><a href="/ssgin/settings.app" class="label label-primary">SETTINGS&nbsp;&nbsp;<i class="s7-settings"></i></a>
+          <li class="parents"><a href="/ssgin/settings.app" class="label label-primary"><i class="s7-settings"></i>&nbsp;&nbsp;SETTINGS</a>
           </li>
         </ul>
         <div class="bottom-sidebar">

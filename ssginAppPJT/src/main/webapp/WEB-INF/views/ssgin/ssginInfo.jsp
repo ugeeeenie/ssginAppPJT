@@ -6,7 +6,7 @@
 
 <div class="am-content" style="max-height:570px;">
 	<div class="page-head">
-       	<h2 align="center">SSG IN. 소개</h2>
+       	<h2>SSG IN. 소개<span class="dot">.</span></h2>
      </div>
      
      <div class="main-content">

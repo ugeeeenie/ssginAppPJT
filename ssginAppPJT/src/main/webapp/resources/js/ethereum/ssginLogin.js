@@ -1,8 +1,9 @@
-var ip = "http://" + $('#ip').val() + ":8545";
+var ip = $('#ip').val();
+	"http://" + $('#ip').val() + ":8545";
 
 Web3 = require('web3');
 web3 = new Web3();
-web3.setProvider(new Web3.providers.HttpProvider(ip)); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
+web3.setProvider(new Web3.providers.HttpProvider("http://" + ip + ":8545")); // 이거 localhost 대신 IP로 하면 안드로이드에서 트랜잭션 가능
 
 var abi = JSON.parse('[{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"joinPossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"existID","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"memberJoin","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"ssginAuth","outputs":[{"name":"id","type":"bytes32"},{"name":"pwd","type":"bytes32"},{"name":"flag","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"},{"name":"userPwd","type":"bytes32"}],"name":"ssginWithID","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"userId","type":"bytes32"}],"name":"memberLeave","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"idList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userId","type":"bytes32"}],"name":"leavePossibleCheck","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]');
 var ssginContract = web3.eth.contract(abi);
@@ -37,6 +38,16 @@ $('#loginBtn').click(function(){
 	var id = $('#hash').val();
 	console.log(id);
 	
+	if($('#pwd6').val() == ""){
+		alert("비밀번호 6자리를 입력해주세요.");
+		return;
+	}
+	
+	var pwd = $('#pwd1').val() + $('#pwd2').val() + $('#pwd3').val()
+			+ $('#pwd4').val() + $('#pwd5').val() + $('#pwd6').val();
+	$('#pwd').val(pwd);
+	alert("pwd : " + pwd);
+	
 	var originPwd = $('#pwd').val();
 	var newPwd = originPwd.substring(0,1) + "s"
 				+ originPwd.substring(1,2) + "s"
@@ -64,7 +75,7 @@ $('#loginBtn').click(function(){
 		        }
 		        if(url == "ssgpay"){
 		        	authUrl = "http://www.ssgpay.com";
-		        	action = "http://10.149.178.62:8081/main.ssgpay";
+		        	action = "http:///" + ip + ":8081/main.ssgpay";
 		        }
 		        
 		        $.ajax({

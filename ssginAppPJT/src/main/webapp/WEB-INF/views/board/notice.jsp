@@ -6,7 +6,7 @@
 
 <div class="am-content" style="max-height:570px;">
 	<div class="page-head">
-       	<h2 align="center">공지사항</h2>
+       	<h2>공지사항<span class="dot">.</span></h2>
      </div>
      
      <div class="main-content">

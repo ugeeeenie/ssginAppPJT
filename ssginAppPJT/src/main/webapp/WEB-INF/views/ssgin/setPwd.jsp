@@ -17,14 +17,15 @@
   <link rel="stylesheet" type="text/css" href="/resources/lib/jquery.gritter/css/jquery.gritter.css"/>
   <link rel="stylesheet" href="/resources/css/mainStyle.css" type="text/css"/>
   <style type="text/css">
-  .row-colors {
-  	line-height: 2cm;
-  	font-size: xx-large;
-  }
   input[type=number] {
   	padding: 0;
     text-align: center;
     font-size: xx-large;
+  }
+  input[type=number]:focus {
+	color: transparent;
+	/* text-shadow: 0px 0px 0px #555555;  
+	-webkit-text-fill-color: transparent; */
   }
   </style>
 </head>
@@ -33,11 +34,14 @@
     <div class="am-top-header">
       <div class="container-fluid">
         <div class="navbar-header">
-          <div class="page-title"><span>SSG IN.</span></div>
+          <div class="page-title"><img src="/resources/img/intro/intro_text.png" style="width:45%;padding:3%;"></div>
     	</div>
       </div>
     </div>
-    <div class="am-content">
+    <div class="am-content" style="background:#555555;">
+    	<!-- <div class="page-head">
+        <h2>회원가입<span class="dot">.</span></h2>
+      </div> -->
       <!-- Main content -->
       <div class="main-content" style="background:#555555;color:white;">
 		<div class="form-group text-center">
@@ -47,46 +51,47 @@
 					<!-- general form elements -->
 					<div class="box">
 						<div class="box-header with-border">
-							<h2>비밀번호 설정</h2>
+							<h2 style="font-family:'NanumBarunGothicLight';">비밀번호 설정<span style="color:#ec5a4b;font-size: 32pt;">.</span></h2>
 						</div>
 						<div class="box-body" id="joinBox" style="display: block;">
 							<form id="goJoin" method="post">
-							<div class="form-group">
-								<div class="row" style="margin:50px 0;">
-									<div class="col-xs-2" style="margin-left:7%;margin-right:-3%;">
+							<div class="row" style="margin:50px;">
+								<div class="form-group">
+									<div class="col-xs-2" style="padding:3px;">
 										<input type="number" class="form-control" id="pwd1" size="1" maxlength="1" 
 											onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+											onclick="javascript:focusMove();"
 											oninput="javascript:checkAndNext(this.id);">
 									</div>
-									<div class="col-xs-2" style="margin-right:-3%;">
+									<div class="col-xs-2" style="padding:3px;">
 										<input type="number" class="form-control" id="pwd2" size="1" maxlength="1" 
 											onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
 											oninput="javascript:checkAndNext(this.id);"
 											onclick="javascript:focusMove();"
 											onkeydown="javascript:backspace(event);">
 									</div>	
-									<div class="col-xs-2" style="margin-right:-3%;">
+									<div class="col-xs-2" style="padding:3px;">
 										<input type="number" class="form-control" id="pwd3" size="1" maxlength="1"
 											onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" 
 											oninput="javascript:checkAndNext(this.id);"
 											onclick="javascript:focusMove();"
 											onkeydown="javascript:backspace(event);">
 									</div>	
-									<div class="col-xs-2" style="margin-right:-3%;">
+									<div class="col-xs-2" style="padding:3px;">
 										<input type="number" class="form-control" id="pwd4" size="1" maxlength="1" 
 											onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
 											oninput="javascript:checkAndNext(this.id);"
 											onclick="javascript:focusMove();"
 											onkeydown="javascript:backspace(event);">
 									</div>	
-									<div class="col-xs-2" style="margin-right:-3%;">
+									<div class="col-xs-2" style="padding:3px;">
 										<input type="number" class="form-control" id="pwd5" size="1" maxlength="1" 
 											onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
 											oninput="javascript:checkAndNext(this.id);"
 											onclick="javascript:focusMove();"
 											onkeydown="javascript:backspace(event);">
 									</div>	
-									<div class="col-xs-2" style="margin-right:7%;">
+									<div class="col-xs-2" style="padding:3px;">
 										<input type="number" class="form-control" id="pwd6" size="1" maxlength="1" 
 											onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
 											oninput="javascript:checkAndNext(this.id);"
@@ -97,7 +102,7 @@
 								</div>
 							</div>
 							<div class="form-group text-center">
-								<a id="nextBtn" class="btn btn-primary">가입하기</a>
+								<a id="nextBtn" class="btn btn-primary" style="width:80%;">가입하기</a>
 							</div>
 							</form>
 						</div>
@@ -144,12 +149,12 @@
   <script type="text/javascript">
     $(document).ready(function(){
     	 $.gritter.add({
-		        title: '지문사용 등록안내',
-		        text: 'SSG IN. 시스템은 휴대폰에 등록되어 있는 지문을 이용합니다.<br>지문인증 사용시 결제비밀번호를 제출한 것과 동일하게 간주됩니다.<br>휴대폰에 등록된 지문 관리 및 이용에 대한 책임은 이용자 본인에게 있습니다.',
-		        image: '/resources/img/intro/fingerprint.png',
-		        class_name: 'clean img-rounded',
-		        time: '3000',
-		      });
+	        title: '지문사용 등록안내',
+	        text: 'SSG IN. 시스템은 휴대폰에 등록되어 있는<br>지문을 사용시 비밀번호를 제출한 것과<br>동일하게 간주됩니다.<br>따라서 휴대폰에 등록된 지문 관리 및<br>이용에 대한 책임은<br>이용자 본인에게 있습니다.',
+	        image: '/resources/img/intro/fingerprint_icon_large.png',
+	        class_name: 'clean img-rounded',
+	        time: '3000',
+		 });
     	 
     	$('#nextBtn').click(function(){
     		if($('#pwd6').val() == ""){

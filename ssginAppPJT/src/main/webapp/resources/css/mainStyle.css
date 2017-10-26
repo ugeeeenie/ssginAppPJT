@@ -91,6 +91,10 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+@import url(https://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothiclight.css);
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -3483,7 +3487,7 @@ select[multiple].input-lg {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 8px 12px;
-  font-size: 25pt;
+  font-size: 16pt;
   line-height: 1.42857143;
   border-radius: 0;
   -webkit-user-select: none;
@@ -8472,11 +8476,10 @@ button:focus {
 .am-top-header .navbar-header .page-title {
   display: none;
   color: #ffffff;
-  font-family: 'Raleway', sans-serif;
-  /* font-size: 19px; */
+  font-family: 'NanumSquare', sans-serif;
   line-height: 70px;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: 30pt;
 }
 @media (max-width: 1450px) {
   .am-top-header .navbar-header .page-title {
@@ -9302,7 +9305,7 @@ button:focus {
   padding: 7%;
   color: #ffffff;
   text-align: center;
-  font-size: small;
+  font-size: 12pt;
 }
 .am-left-sidebar .sidebar-elements > li > a .icon {
   display: block;
@@ -10536,7 +10539,7 @@ button:focus {
 }
 @media (max-width: 1450px) {
   .main-content {
-    min-height: 560px;
+    min-height: 551px;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     padding-left: 15px;
@@ -10559,11 +10562,15 @@ button:focus {
 .page-head h2 {
   margin-bottom: 5px;
   margin-top: 6px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'NanumBarunGothicLight', sans-serif;
   font-weight: 300;
   letter-spacing: -1px;
   font-size: 28px;
   line-height: 36px;
+}
+.page-head h2 .dot {
+	color: #ec5a4b;
+    font-size: 32pt;
 }
 .page-head .breadcrumb {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -10861,7 +10868,7 @@ button:focus {
   font-size: 11px;
   font-weight: 600;
   z-index: 0;
-  content: "OFF";
+  /* content: "OFF"; */
   right: 0;
   display: block;
   width: 100%;
@@ -10871,6 +10878,7 @@ button:focus {
   text-align: right;
   padding-right: 10px;
   color: #ffffff;
+  background: url("/resources/img/logo/toggle_off.png");
 }
 .rtl .switch-button label:before {
   padding-right: 0;
@@ -10878,7 +10886,7 @@ button:focus {
   text-align: left;
 }
 .switch-button input[type="checkbox"]:checked + span {
-  background-color: #ef6262;
+  background: url("/resources/img/logo/toggle_on.png");
   display: block;
   position: absolute;
   top: 0;
@@ -10899,11 +10907,12 @@ button:focus {
   font-size: 11px;
   font-weight: 600;
   z-index: 0;
-  content: "ON";
+  /* content: "ON"; */
   color: #ffffff;
   left: 0;
   text-align: left;
   padding-left: 10px;
+  background: url("/resources/img/logo/toggle_on.png/");
 }
 .rtl .switch-button input[type="checkbox"]:checked + span label:before {
   padding-right: 10px;
@@ -11331,8 +11340,10 @@ button:focus {
 .gritter-item-wrapper .gritter-item .gritter-content.gritter-with-image .gritter-title,
 .gritter-item-wrapper .gritter-item .gritter-content.gritter-without-image .gritter-title {
   text-shadow: none;
-  font-weight: 300;
-  font-size: 17px;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 10px;
+  color: black;
 }
 .gritter-item-wrapper .gritter-item .gritter-content.gritter-with-image p,
 .gritter-item-wrapper .gritter-item .gritter-content.gritter-without-image p {
@@ -11347,6 +11358,8 @@ button:focus {
 }
 .gritter-item-wrapper.img-rounded .gritter-img-container .gritter-image {
   border-radius: 50%;
+  width: 90%;
+  height: 100px;
 }
 .gritter-item-wrapper.clean {
   background: #ffffff;
@@ -11950,7 +11963,7 @@ li.L9 {
 }
 .timeline-time {
   float: right;
-  color: #ababab;
+  color: #aaaaaa;
 }
 .rtl .timeline-time {
   float: left;
@@ -14196,8 +14209,8 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-dark {
 	color: #fff;
-  	background-color: #3d3c3c;
-  	border: 1px solid #4e4e4e;
+  	background-color: #4f4f4f;
+  	border: 1px solid #4f4f4f;
   /* border-color: #302f2f;
   border-color: #3d3c3c; */
 }
@@ -19726,7 +19739,7 @@ a.text-alt4:focus {
   border-width: 2px;
   box-shadow: none;
   padding: 10px 12px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .form-control:focus {
   box-shadow: none;
@@ -20051,8 +20064,8 @@ form.dropzone .dz-preview .dz-error-message {
 }
 .fuelux .wizard > .steps li {
   float: left;
-  margin: 0;
-  padding: 0 20px 0 30px;
+  margin-bottom: 3%;
+  /* padding: 0 20px 0 30px; */
   height: 46px;
   line-height: 46px;
   position: relative;
@@ -20082,11 +20095,11 @@ form.dropzone .dz-preview .dz-error-message {
   top: -24px;
 }
 .fuelux .wizard > .steps li.complete {
-  background: #f3f4f5;
+  /* background: #f3f4f5; */
   color: #468847;
 }
 .fuelux .wizard > .steps li.complete:hover {
-  background: #e7eff8;
+  /* background: #e7eff8; */
   cursor: pointer;
 }
 .fuelux .wizard > .steps li.complete:hover .chevron:before {
@@ -20114,7 +20127,7 @@ form.dropzone .dz-preview .dz-error-message {
 }
 .fuelux .wizard > .steps li:first-child {
   border-radius: 4px 0 0 4px;
-  padding-left: 20px;
+  padding-left: 3%;
 }
 .fuelux .wizard > .actions {
   z-index: 1000;
@@ -20191,31 +20204,33 @@ form.dropzone .dz-preview .dz-error-message {
 }
 .fuelux .wizard > .steps > li {
   height: 48px;
-  background-color: #f7f7f7;
+  background-color: white;
 }
 .fuelux .wizard > .steps > li .chevron {
-  border-left-color: #e0e0e0;
+  border-left-color: white;
 }
 .fuelux .wizard > .steps > li .chevron:before {
-  border-left: 14px solid #f7f7f7;
+  border-left: 14px solid white;
 }
 .fuelux .wizard > .steps li {
-  font-size: 15px;
+  font-size: 9pt;
 }
 .fuelux .wizard > .steps li:first-child {
   border-radius: 0;
 }
 .fuelux .wizard > .steps li.active {
   background: #ffffff;
-  color: #ef6262;
+  color: black;
+  font-weight: bold;
+  font-size: 10pt;
 }
 .fuelux .wizard > .steps li.active .chevron:before {
   -moz-transform: scale(0.9999);
   border-left: 14px solid #ffffff;
 }
 .fuelux .wizard > .steps li.complete {
-  color: #ffffff;
-  background: #ef6262;
+  color: #999999;
+  /* background: #ef6262; */
 }
 .fuelux .wizard > .steps li.complete .chevron {
   border-left-color: #eb3d3d;
@@ -20224,7 +20239,7 @@ form.dropzone .dz-preview .dz-error-message {
   border-left: 14px solid #ef6262;
 }
 .fuelux .wizard > .steps li.complete:hover {
-  background: #f07070;
+  /* background: #f07070; */
 }
 .fuelux .wizard > .steps li.complete:hover .chevron {
   border-left-color: #ec4747;

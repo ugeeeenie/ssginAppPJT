@@ -22,6 +22,10 @@ public class MainCtrl {
 			e.printStackTrace();
 		}
 		
+		if(session.getAttribute("loginUser") != null){
+			return "redirect:/ssgin/loginForm.app";
+		}
+		
 		return "intro";
 	}
 }

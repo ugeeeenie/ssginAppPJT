@@ -3,11 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 <%@include file="../include/sidebar.jsp"%>
-
+<style type="text/css">
+body {
+	overflow-y: hidden;
+}
+</style>
 <!-- Main content -->
     <div class="am-content">
     	<div class="page-head">
-        	<h2 align="center">MY 쓱- BLOCK</h2>
+        	<h2>MY 쓱- BLOCK<span class="dot">.</span></h2>
       	</div>
       	
       <div class="main-content">
