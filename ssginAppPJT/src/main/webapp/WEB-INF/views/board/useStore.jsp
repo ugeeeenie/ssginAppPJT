@@ -3,14 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <%@include file="../include/sidebar.jsp"%>
-
 <div class="am-content" style="max-height:570px;">
 	<div class="page-head">
-       	<h2 align="center">사용처 안내</h2>
+       	<h2>사용처 안내<span class="dot">.</span></h2>
      </div>
      
      <div class="main-content">
-     	<img src="../../resources/img/use_store.png" width="100%">
+     	<img src="../../resources/img/board/use_store.png" width="100%">
      </div>
 </div>
   <!-- End Main content -->

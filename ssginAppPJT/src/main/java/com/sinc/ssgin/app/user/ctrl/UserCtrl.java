@@ -1,5 +1,7 @@
 package com.sinc.ssgin.app.user.ctrl;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,15 +33,25 @@ public class UserCtrl {
 	public String loginForm(UserVO user, String url, HttpSession session){
 		System.out.println("loginform ctrl ok");
 		
+		// 필요한 session들 Setting
 		if(url == null){
 			url = "ssgin";
 		}
-		
 		session.setAttribute("url", url);
 		
+		if(session.getAttribute("ip") == null){
+			try {
+				InetAddress local = InetAddress.getLocalHost();
+				session.setAttribute("ip", local.getHostAddress());
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		//if(session.getAttribute("loginUser") == null){
-			session.setAttribute("loginUser", new UserVO(64, "0x987c07ecba6bb89675c78259a1c40abd042b7cf987af73ac73960106951e2e1c", 175869,
-															"0xb9605ed34c20712529ca535806d0d9fa9058ac2d960a7e7a09f93ad78ea8fea2", "Y"));
+			session.setAttribute("loginUser", new UserVO(64, 
+					"0x987c07ecba6bb89675c78259a1c40abd042b7cf987af73ac73960106951e2e1c", 175869, 
+					"0xb9605ed34c20712529ca535806d0d9fa9058ac2d960a7e7a09f93ad78ea8fea2", "Y"));
 		//}
 		
 		System.out.println(((UserVO)session.getAttribute("loginUser")).toString());

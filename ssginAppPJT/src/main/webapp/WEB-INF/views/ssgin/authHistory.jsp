@@ -75,9 +75,9 @@
 		             			+ '<div class="timeline-content">'
 		              			+ '<div class="timeline-header"><span class="timeline-time">' + data.list[i].auth_time + '</span>';
 		              	if(data.list[i].auth_url.length < 24){
-		              		listStr += '<p class="timeline-activity pull-right"><a href="#">' + data.list[i].auth_url + '</a></p>';
+		              		listStr += '<p class="timeline-activity pull-right"><span href="#" style="color:#000;">' + data.list[i].auth_url + '</span></p>';
 		              	}else{
-		              		listStr += '<p class="timeline-activity pull-right"><a href="#">' + data.list[i].auth_url.substr(0, 24) + '...</a></p>';
+		              		listStr += '<p class="timeline-activity pull-right"><span href="#" style="color:#000;">' + data.list[i].auth_url.substr(0, 24) + '...</span></p>';
 		              	}		
 		              	
 		              	listStr += '</div></div></li>';
@@ -87,9 +87,9 @@
 	             			+ '<div class="timeline-content">'
 	              			+ '<div class="timeline-header"><span class="timeline-time">' + data.list[i].auth_time + '</span>';
               			if(data.list[i].auth_url.length < 24){
-		              		listStr += '<p class="timeline-activity pull-right"><a href="#">' + data.list[i].auth_url + '</a></p>';
+		              		listStr += '<p class="timeline-activity pull-right"><span href="#" style="color:#000;">' + data.list[i].auth_url + '</a></span>';
 		              	}else{
-		              		listStr += '<p class="timeline-activity pull-right"><a href="#" class="pull-right">' + data.list[i].auth_url.substr(0, 24) + '...</a></p>';
+		              		listStr += '<p class="timeline-activity pull-right"><span href="#" class="pull-right" style="color:#000;">' + data.list[i].auth_url.substr(0, 24) + '...</span></p>';
 		              	}		
 			              	
 			            listStr += '</div></div></li>';
@@ -98,7 +98,7 @@
     			
     			if(data.paging.totalCount > data.paging.endRowNum){
     				listStr += '<li class="timeline-loadmore" style="list-style:none;">'
-    						+ '<a href="javascript:loadMore(' + data.paging.pageNo + 1 + ');" class="load-more-btn">'
+    						+ '<a href="javascript:loadMore(' + data.paging.pageNo + 1 + ');" class="btn btn-primary" style="width:100%;font-size:12pt;">'
     						+ '더보기</a></li>';
     			}else{
     				$('.timeline').css('margin', '0 auto');

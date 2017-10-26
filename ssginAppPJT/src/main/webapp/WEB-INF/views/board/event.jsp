@@ -6,7 +6,7 @@
 
 <div class="am-content">
 	<div class="page-head">
-       	<h2 align="center">EVENT</h2>
+       	<h2>EVENT<span class="dot">.</span></h2>
      </div>
      
      <div class="main-content">

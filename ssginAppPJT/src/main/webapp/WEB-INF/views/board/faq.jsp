@@ -6,7 +6,7 @@
 
 <div class="am-content" style="max-height:570px;">
 	<div class="page-head">
-       	<h2 align="center">FAQ 자주묻는질문</h2>
+       	<h2>FAQ<span class="dot">.</span></h2>
      </div>
      
      <div class="main-content">

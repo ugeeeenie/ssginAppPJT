@@ -6,10 +6,10 @@
 <!-- Main content -->
   <div class="am-content">
   	<div class="page-head">
-        <h2 align="center">이용약관 및 정책</h2>
+        <h2>이용약관 및 정책<span class="dot">.</span></h2>
       </div>
   
-    <div class="main-content">
+    <div class="main-content" style="overflow-y:hidden;">
 		<div class="form-group text-center">
 			<div class="row">
 				<!-- left column -->

@@ -18,7 +18,9 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <link rel="stylesheet" href="/resources/css/mainStyle.css" type="text/css"/>
-  <style type="text/css">
+  <!-- <link rel="stylesheet" type="text/css"
+  		href="http://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css">
+   --><style type="text/css">
   .radio-group label {
 	  overflow: hidden;
 	}
@@ -48,14 +50,14 @@
     <div class="am-top-header">
       <div class="container-fluid">
         <div class="navbar-header">
-          <div class="page-title"><span>SSG IN.</span></div>
+          <div class="page-title"><img src="/resources/img/intro/intro_text.png" style="width:45%;padding:3%;"></div>
     	</div>
       </div>
     </div>
       <!-- Main content -->
       <div class="am-content">
       <div class="page-head">
-        <h2>회원가입</h2>
+        <h2>회원가입<span class="dot">.</span></h2>
       </div>
       <div class="main-content">
         <div class="row wizard-row">
@@ -63,9 +65,14 @@
             <div class="block-wizard panel panel-default">
               <div id="wizard1" class="wizard wizard-ux">
                 <ul class="steps">
-                  <li data-step="1" class="active" id="steps1">Step 1<span class="chevron"></span></li>
-                  <li data-step="2" id="steps2">Step 2<span class="chevron"></span></li>
-                  <li data-step="3" id="steps3">Step 3<span class="chevron"></span></li>
+                  <li data-step="1" class="active" id="steps1">
+                  	<img src="/resources/img/intro/pink1.png" style="width:27px;height:27px;" id="steps1img"> 이용약관&nbsp;
+                  	<img src="/resources/img/intro/step_bar.png" style="width:20px;">&nbsp;</li>
+                  <li data-step="2" id="steps2">&nbsp;
+                  	<img src="/resources/img/intro/gray2.png" style="width:25px;height:25px;" id="steps2img"> 회원정보입력&nbsp;
+                  	<img src="/resources/img/intro/step_bar.png" style="width:20px;">&nbsp;</li>
+                  <li data-step="3" id="steps3">&nbsp;
+                  	<img src="/resources/img/intro/gray3.png" style="width:25px;height:25px;"> 비밀번호설정 </li>
                 </ul>
                 <div class="step-content">
                   <div data-step="1" class="step-pane active" id="data1">
@@ -92,16 +99,16 @@
                     <div class="form-group">
                       <div class="col-xs-12 form-group-nopadding text-right">
                       	<!-- <a href="javascript:checkAgree();" class="btn btn-primary btn-space wizard-next" data-wizard="#wizard1"><img src="../../resources/img/next.png" style="width:100%;"></a> -->
-                        <button id="nextBtn1" data-wizard="#wizard1" onclick="checkAgree();" style="border:none;padding:0;"><img class="btn-img" src="../../resources/img/next.png" style="width:100%;"></button>
+                        <button id="nextBtn1" data-wizard="#wizard1" onclick="checkAgree();" style="border:none;padding:0;"><img class="btn-img" src="../../resources/img/intro/next.png" style="width:100%;"></button>
                       </div>
                     </div>
                   </div>
                
                   <div data-step="2" class="step-pane" id="data2">
                     <form id="joinFormStep2" class="form-horizontal" data-parsley-validate="" novalidate="" method="post">
-                      <div class="form-group" style="padding-bottom: 0;padding-top: 0;">
+                     <!--  <div class="form-group" style="padding-bottom: 0;padding-top: 0;">
                         <p class="form-control-static">회원정보 입력</p>
-                      </div>
+                      </div> -->
                       <div class="form-group">
                         <input type="text" name="user_name" parsley-trigger="change" required placeholder="이름" autocomplete="off" class="form-control">
                       </div>
@@ -145,14 +152,14 @@
 	                     </div>
 	                     <div class="col-xs-4 form-group-nopadding">
 	                     	<div class="input-group pull-right">
-	                        	<a id="phoneAuthBtn" class="btn btn-space btn-alt3" style="font-size: small; margin: 2% 0;">인증번호 받기</a>
+	                        	<a id="phoneAuthBtn" class="btn btn-space btn-dark" style="font-size:small;margin:2% 0;">인증번호 받기</a>
 	                     	</div>
 	                     </div>
 	                  </div>
                       <div class="form-group">
                         <div class="col-xs-12 form-group-nopadding text-right">
-                        	<button id="nextBtn2" data-wizard="#wizard1" onclick="compareNum();" style="border:none;padding:0;"><img class="btn-img" src="../../resources/img/next.png" style="width:100%;"></button>
-                        	<!-- <a href="javascript:joinFormSubmit();" class="" data-wizard="#wizard1"><img src="../../resources/img/next.png" style="width:100%;"></a> -->
+                        	<!-- <button id="nextBtn2" data-wizard="#wizard1" onclick="compareNum();" style="border:none;padding:0;"><img class="btn-img" src="/resources/img/intro/next.png" style="width:100%;"></button> -->
+                        	<a href="javascript:compareNum();" class="" data-wizard="#wizard1"><img class="btn-img" src="/resources/img/intro/next.png" style="width:100%;"></a>
                         </div>
                       </div>
                     </form>
@@ -210,7 +217,14 @@
   		  $('#data2').prop('class', 'step-pane active');
   		  
   		  $('.steps').find('#steps1').prop('class', 'complete');
-  		  $('.steps').find('#steps2').prop('class', 'active');  		  
+  		  $('.steps').find('#steps2').prop('class', 'active');  		
+  		  
+  		  $('#steps1img').prop('src', '/resources/img/intro/gray1.png')
+  		  				.css('width', '25px')
+  		  				.css('height', '25px');
+  		  $('#steps2img').prop('src', '/resources/img/intro/pink2.png')
+  		  				.css('width', '27px')
+  		  				.css('height', '27px');
   	  }
     }
     
@@ -221,22 +235,28 @@
     function compareNum(){
     	/* $('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
 	    $('#joinFormStep2').submit(); */
-	      
+	   
 	    var num = $('#randomNum').val();
+	    
+	    alert(num + ", " + $('#authNum').val());
 	    
 	    if($('#authNum').is(":disabled")){
 	    	alert("인증번호 받기를 클릭하세요");
 	    	return;
 	    }else{
-	    	if(num == $('#authNum').val()){
+	    	//if(num == $('#authNum').val()){
 	    		  alert("휴대폰 인증에 성공하였습니다.");
 	    		  
 	    		  $('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
 	    	      $('#joinFormStep2').submit();
-	    	}else{
+	    	/*}else{
 	    		  alert("인증번호가 일치하지 않습니다.");
+	    		  $('#joinFormStep2').each(function(){
+	    			  this.reset();
+	    		  });
+	    		  $('#authNum').attr('disabled', 'true');
 	    		  return;
-	    	} 
+	    	} */
 	    }
     }
   </script>

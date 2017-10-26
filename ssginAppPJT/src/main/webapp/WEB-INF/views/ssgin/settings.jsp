@@ -12,32 +12,35 @@
             <div id="accordion1" class="panel-group accordion">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a id="resetBtn" class="collapsed"><i class="icon s7-angle-down"></i> 비밀번호 변경 </a></h4>
+                  <h4 class="panel-title"><a id="resetBtn" class="collapsed" style="border-bottom:1px solid #ececec;">
+                  	비밀번호 변경<span class="pull-right"><i class="icon s7-angle-down"></i></span></a></h4>
                 </div>
               </div>
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a href="#" class="collapsed" style="width:70%;float:left;"><i class="icon s7-angle-down"></i> 광고성 정보 수신 동의</a>
-	                  <span class="switch-button">
-	                    <input type="checkbox" checked name="adsCheck" id="adsCheck">
-	                      <span><label for="adsCheck"></label></span>
-	                  </span>
+                  <h4 class="panel-title"><a href="javascript:adChange();" class="collapsed" style="border-bottom:1px solid #ececec;">
+                  	광고성 정보 수신 동의
+                  	<span class="pull-right" style="margin-right:-20%;margin-top:-10px;">
+                  		<img src="/resources/img/logo/toggle_on.png" style="width:40%;" id="adOnOff">
+                  	</span></a>
                   </h4>
                 </div>
               </div>
               <div class="panel panel-default" style="clear:both;">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a href="/ssgin/policy.app" class="collapsed"><i class="icon s7-angle-down"></i> 이용약관 및 정책</a></h4>
+                  <h4 class="panel-title"><a href="/ssgin/policy.app" class="collapsed" style="border-bottom:1px solid #ececec;">
+                  	이용약관 및 정책<span class="pull-right"><i class="icon s7-angle-down"></i></span></a></h4>
                 </div>
               </div>
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a id="appInfo" class="collapsed"><i class="icon s7-angle-down"></i> 앱 정보</a></h4>
+                  <h4 class="panel-title"><a id="appInfo" class="collapsed" style="border-bottom:1px solid #ececec;">
+              	    앱 정보<span class="pull-right"><i class="icon s7-angle-down"></i></span></a></h4>
                 </div>
               </div>
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title"><a id="userDelete" class="collapsed"><i class="icon s7-angle-down"></i> SSG IN 계정 해지</a></h4>
+                  <h4 class="panel-title"><a id="userDelete" class="collapsed">SSG IN 계정 해지<span class="pull-right"><i class="icon s7-angle-down"></i></span></a></h4>
                 </div>
               </div>
             </div>
@@ -87,6 +90,15 @@
     		location.href = "/ssgin/leave.app?state=delete";
     	}
     });
+    
+    function adChange(){
+    	if($('#adOnOff').attr('src') == "/resources/img/logo/toggle_off.png"){
+    		$('#adOnOff').attr('src', '/resources/img/logo/toggle_on.png');
+    	}else{
+        	$('#adOnOff').attr('src', '/resources/img/logo/toggle_off.png');
+    	}
+    	
+    }
   </script>
 </body>
 </html>
