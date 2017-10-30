@@ -244,19 +244,19 @@
 	    	alert("인증번호 받기를 클릭하세요");
 	    	return;
 	    }else{
-	    	//if(num == $('#authNum').val()){
+	    	if(num == $('#authNum').val()){
 	    		  alert("휴대폰 인증에 성공하였습니다.");
 	    		  
 	    		  $('#joinFormStep2').attr('action', '/ssgin/setPwd.app');
 	    	      $('#joinFormStep2').submit();
-	    	/*}else{
+	    	}else{
 	    		  alert("인증번호가 일치하지 않습니다.");
 	    		  $('#joinFormStep2').each(function(){
 	    			  this.reset();
 	    		  });
 	    		  $('#authNum').attr('disabled', 'true');
 	    		  return;
-	    	} */
+	    	}
 	    }
     }
   </script>

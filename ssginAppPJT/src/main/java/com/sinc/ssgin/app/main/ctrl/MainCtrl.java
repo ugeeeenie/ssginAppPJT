@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainCtrl {
 	
 	@RequestMapping("/intro.app")
-	public String main(HttpSession session ) {
+	public String main(HttpSession session) {
 		System.out.println("MainCtrl main");
 		
 		try {
