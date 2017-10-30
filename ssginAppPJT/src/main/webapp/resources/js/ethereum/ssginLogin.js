@@ -69,13 +69,18 @@ $('#loginBtn').click(function(){
 			    var authUrl = "";
 			    var action = "";
 			        
+			    
 		        if(url == "ssgin"){
 		        	authUrl = "http://www.ssgin.com";
 		        	action = "/ssgin/main.app";
 		        }
 		        if(url == "ssgpay"){
 		        	authUrl = "http://www.ssgpay.com";
-		        	action = "http:///" + ip + ":8081/main.ssgpay";
+		        	action = "http://" + ip + ":8081/succmain.ssgpay?what=succ";
+		        }
+		        if(url == "mappin"){
+		        	authUrl = "http://www.mappin.com";
+		        	/*action = "#";*/
 		        }
 		        
 		        $.ajax({
@@ -83,17 +88,21 @@ $('#loginBtn').click(function(){
 			    	type : "post",
 			    	data : { auth_url : authUrl },
 			      	success : function(){
-			      		alert("SSG IN 성공^^");
+			      		alert("SSG IN 성공하였습니다.");
 			      		
-			      		$('#phoneForm').attr('action', action);
-			          	$('#phoneForm').submit();
+			      		if(url != "mappin"){
+			      			$('#phoneForm').attr('action', action);
+				          	$('#phoneForm').submit();
+			      		}else{
+			      			goOtherSite();
+			      		}
 			      	}
 			   	});
 			}
 			
 			if(result == "wrongPassword"){
 				console.log(result);
-				alert("비밀번호 오류!");
+				alert("비밀번호가 일치하지 않습니다.");
 			}
 			
 			if(result == "noUser"){
@@ -109,3 +118,9 @@ $('#loginBtn').click(function(){
 		}
 	});
 });
+
+function goOtherSite(){
+	alert("goOtherSite");
+	window.close();
+	opener.location.href = "http://localhost:8088/mappin/guide/insertForm.go";
+}

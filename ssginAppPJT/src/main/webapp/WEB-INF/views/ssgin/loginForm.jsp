@@ -160,7 +160,7 @@
   <script src="/resources/js/ethereum/web3.js"></script>	
   <script src="/resources/js/ethereum/clipboard.min.js"></script>	
   <script src="/resources/js/ethereum/ethereum.js"></script>
-  <script src="/resources/js/ethereum/ssginLogin.js" type="text/javascript"></script> 
+  <script src="/resources/js/ethereum/ssginLogin.js?ver=2" type="text/javascript"></script> 
   <script>
     //android -> javascript
     //안드로이드 버튼 클릭시 
@@ -192,18 +192,8 @@
         }
         if(url == "ssgpay"){
          authUrl = "http://www.ssgpay.com";
-         action = "http://" + ip + ":8081/succed.ssgpay?what=succ";
+         action = "http://" + ip + ":8081/succmain.ssgpay?what=succ";
         }
-        
-        $.ajax({
-	    	url : "/ssgin/insertLog.app",
-	    	type : "post",
-	    	data : { auth_url : authUrl },
-	      	success : function(){
-	      		$('#phoneForm').attr('action', action);
-	          	$('#phoneForm').submit();
-	      	}
-	   	});
      }
     
     function checkAndNext(id){

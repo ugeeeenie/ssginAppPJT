@@ -57,7 +57,7 @@ $(function(){
 										user_tx : txHash },
 								success : function(){
 									sleep(10000);
-									alert("블록체인 SSG IN 시스템 가입을 환영합니다^^");
+									alert("블록체인 SSG IN 시스템 가입을 환영합니다.");
 									location.href = "/ssgin/loginForm.app";
 								}
 							});

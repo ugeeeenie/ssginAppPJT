@@ -30,8 +30,11 @@ public class UserCtrl {
 	
 	//로그인폼페이지
 	@RequestMapping("/loginForm.app")
-	public String loginForm(UserVO user, String url, HttpSession session){
+	public String loginForm(UserVO user, String id, String url, HttpSession session){
 		System.out.println("loginform ctrl ok");
+		
+		System.out.println("url : " + url);
+		System.out.println("id : " + id);
 		
 		// 필요한 session들 Setting
 		if(url == null){
@@ -48,11 +51,16 @@ public class UserCtrl {
 			}
 		}
 		
-		//if(session.getAttribute("loginUser") == null){
-			session.setAttribute("loginUser", new UserVO(64, 
-					"0x987c07ecba6bb89675c78259a1c40abd042b7cf987af73ac73960106951e2e1c", 175869, 
-					"0xb9605ed34c20712529ca535806d0d9fa9058ac2d960a7e7a09f93ad78ea8fea2", "Y"));
-		//}
+		if(url.equals("mappin")){
+			user.setUser_id(id);
+			session.setAttribute("loginUser", service.loginUserService(user));
+		}else{
+			//if(session.getAttribute("loginUser") == null){
+				session.setAttribute("loginUser", new UserVO(64, 
+						"0x987c07ecba6bb89675c78259a1c40abd042b7cf987af73ac73960106951e2e1c", 175869, 
+						"0xb9605ed34c20712529ca535806d0d9fa9058ac2d960a7e7a09f93ad78ea8fea2", "Y"));
+			//}
+		}
 		
 		System.out.println(((UserVO)session.getAttribute("loginUser")).toString());
 		
